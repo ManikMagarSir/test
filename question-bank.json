@@ -1,5 +1,5 @@
 {
-  "title": "Software Engineering Quiz - Comprehensive Question Bank",
+  "title": "Software Engineering Quiz - Expert Difficulty Edition",
   "topics": [
     "PMBOK & Project Management",
     "Agile & Scrum",
@@ -11,2127 +11,702 @@
     {
       "id": 1,
       "topic": "PMBOK & Project Management",
-      "difficulty": "easy",
-      "question": "How many knowledge areas are there in traditional PMBOK?",
-      "options": ["9", "10", "12", "8"],
-      "correct": 1,
-      "explanation": "Traditional PMBOK had 10 knowledge areas. PMBOK 7th edition shifted to 8 performance domains and 12 principles."
+      "difficulty": "hard",
+      "question": "What is the primary function of the Project Charter?",
+      "options": [
+        "To break down the project scope into manageable technical deliverables and work packages.",
+        "To establish the detailed timeline, critical path, and resource allocation for the execution phase.",
+        "To officially authorize the project existence and give the project manager authority over resources.",
+        "To create a binding legal contract between the development team and the external stakeholders."
+      ],
+      "correct": 2,
+      "explanation": "A common misconception is that a Charter defines the schedule or functions as a detailed scope breakdown (that's the WBS/Schedule). It exists purely to authorize the project and grant the PM authority."
     },
     {
       "id": 2,
       "topic": "PMBOK & Project Management",
       "difficulty": "medium",
-      "question": "What are the five process groups in project management?",
+      "question": "Which of the following best describes the difference between Quality Assurance (QA) and Quality Control (QC)?",
       "options": [
-        "Initiating, Planning, Executing, Monitoring & Controlling, Closing",
-        "Starting, Organizing, Leading, Controlling, Ending",
-        "Define, Design, Develop, Deploy, Deliver",
-        "Conceive, Develop, Implement, Operate, Terminate"
+        "QA focuses on preventing defects by improving processes; QC focuses on identifying defects in the final product.",
+        "QA is executed by the test team; QC is executed by automated unit testing scripts.",
+        "QA ensures the product is built within budget; QC ensures the product is built on time.",
+        "QA validates user stories with the client; QC verifies against the technical specifications."
       ],
       "correct": 0,
-      "explanation": "The 5 Process Groups: Initiating, Planning, Executing, Monitoring & Controlling, and Closing."
+      "explanation": "QA is process-oriented (preventative), evaluating how the team builds software. QC is product-oriented (reactive), finding bugs in what was built. Many conflate the two as just 'testing'."
     },
     {
       "id": 3,
       "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What does SMART stand for?",
+      "difficulty": "hard",
+      "question": "When building a Work Breakdown Structure (WBS), how should the lowest level (the work package) be defined?",
       "options": [
-        "Specific, Measurable, Achievable, Relevant, Time-bound",
-        "Simple, Manageable, Actionable, Realistic, Trackable",
-        "Strategic, Measurable, Aligned, Results-driven, Timely",
-        "Specific, Measurable, Accountable, Relevant, Traceable"
+        "As a specific action verb or task assigned to a single developer (e.g., 'Write login API').",
+        "As a measurable deliverable that can be reliably estimated for cost and duration.",
+        "As a chronological phase of the SDLC (e.g., 'Testing Phase 1').",
+        "As a set of features that fit within a single two-week sprint."
       ],
-      "correct": 0,
-      "explanation": "SMART criteria ensure objectives are Specific, Measurable, Achievable/Assignable, Relevant/Realistic, and Time-bound."
+      "correct": 1,
+      "explanation": "A WBS is deliverable-oriented, not task-oriented. Writing 'Design Database' is a task, not a WBS work package. 'Database Schema Document' is the deliverable work package."
     },
     {
       "id": 4,
       "topic": "PMBOK & Project Management",
       "difficulty": "hard",
-      "question": "What is the difference between 'Baseline' and 'Target'?",
+      "question": "A team encounters an issue that was explicitly predicted during planning. They immediately employ the funds set aside for this exact scenario. Which reserve did they use?",
       "options": [
-        "Baseline is approved plan; Target is desired outcome",
-        "Baseline is for cost; Target is for schedule",
-        "They are interchangeable",
-        "Baseline can change; Target is fixed"
+        "Management Reserve",
+        "Technical Debt Allowance",
+        "Sunk Cost Reserve",
+        "Contingency Reserve"
       ],
-      "correct": 0,
-      "explanation": "Baseline is the approved version requiring formal change control. Target is the desired outcome that may adjust."
+      "correct": 3,
+      "explanation": "Management reserves are for 'unknown-unknowns' (unforeseen risks). Contingency reserves are explicitly budgeted for 'known-unknowns' (identified risks inside the risk register)."
     },
     {
       "id": 5,
       "topic": "PMBOK & Project Management",
       "difficulty": "medium",
-      "question": "What is a Work Breakdown Structure (WBS)?",
+      "question": "A stakeholder demands an urgent new feature. The Project Manager immediately adds the task to the Gantt chart and assigns a developer. What critical PMBOK process was violated?",
       "options": [
-        "Hierarchical decomposition of project deliverables",
-        "Team organizational chart",
-        "Project schedule timeline",
-        "Budget breakdown"
+        "Perform Integrated Change Control",
+        "Plan Resource Management",
+        "Verify Scope",
+        "Validate Technical Debt"
       ],
       "correct": 0,
-      "explanation": "WBS breaks down project work into manageable components hierarchically."
+      "explanation": "Adding features without assessing their impact on schedule, cost, and risk through a formal Change Control Board is the textbook definition of unchecked scope creep."
     },
     {
       "id": 6,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What is the 'Critical Path' in project management?",
+      "topic": "Agile & Scrum",
+      "difficulty": "medium",
+      "question": "During the Daily Scrum, the lead developer spends 10 minutes explaining the technical architecture of a database migration to the team. What is wrong with this scenario?",
       "options": [
-        "Longest sequence of dependent tasks determining project duration",
-        "Most important tasks only",
-        "Path with highest risk",
-        "Shortest possible duration path"
+        "Database migrations should only be discussed during Sprint Review.",
+        "The Product Owner must approve technical discussions before they happen.",
+        "The Daily Scrum is for inspecting progress toward the Sprint Goal, not detailed technical problem-solving.",
+        "The Scrum Master should have led the architecture discussion instead."
       ],
-      "correct": 0,
-      "explanation": "Critical path is the longest sequence of dependent tasks that determines the minimum project duration."
+      "correct": 2,
+      "explanation": "A common anti-pattern is using the Daily Scrum for deep technical problem-solving. It is strictly a 15-minute synchronization to adapt the Sprint Backlog; problem-solving happens afterward."
     },
     {
       "id": 7,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "easy",
-      "question": "What is the purpose of a stakeholder register?",
+      "topic": "Agile & Scrum",
+      "difficulty": "hard",
+      "question": "A story meets all functional acceptance criteria but lacks automated tests, which is a requirement in the team's Definition of Done (DoD). The sprint ends today. What happens to the story?",
       "options": [
-        "Identify and document stakeholders' interests and influence",
-        "Track project finances",
-        "List team members",
-        "Record meeting minutes"
+        "It is marked as 'Done' but a technical debt ticket is created for the tests.",
+        "The Sprint is extended by one day so the team can write the tests.",
+        "It is returned to the Product Backlog and not demonstrated at the Sprint Review.",
+        "It is demonstrated at the Sprint Review but released sub-optimally."
       ],
-      "correct": 0,
-      "explanation": "Stakeholder register identifies all stakeholders, their interests, involvement, and influence on the project."
+      "correct": 2,
+      "explanation": "If an item does not meet the DoD, it is NOT 'Done'. It cannot be released and cannot be presented at the Sprint Review. It goes back to the backlog for reprioritization."
     },
     {
       "id": 8,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is Earned Value Management (EVM)?",
+      "topic": "Agile & Scrum",
+      "difficulty": "hard",
+      "question": "Who is responsible for maximizing the value of the product resulting from the work of the Scrum Team?",
       "options": [
-        "Integrated approach to measure project performance",
-        "Method to pay employees",
-        "Risk calculation technique",
-        "Quality metric"
+        "The Scrum Master",
+        "The Development Team",
+        "The Product Owner",
+        "The Project Sponsor"
       ],
-      "correct": 0,
-      "explanation": "EVM integrates scope, schedule, and cost to measure project performance objectively."
+      "correct": 2,
+      "explanation": "Many think the Scrum Master owns value delivery, but the Scrum Master owns the 'process'. The Product Owner is solely responsible for maximizing product value via the Product Backlog."
     },
     {
       "id": 9,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What does 'Management Reserve' refer to?",
+      "topic": "Agile & Scrum",
+      "difficulty": "medium",
+      "question": "In Scrum, what is the primary purpose of the Sprint Retrospective?",
       "options": [
-        "Budget for unknown-unknowns",
-        "Contingency fund for known risks",
-        "Team bonus pool",
-        "Project profit margin"
+        "For the team to inspect how the last Sprint went and identify process improvements.",
+        "To review the completed features and gather feedback from stakeholders.",
+        "To estimate the difficulty of user stories for the upcoming Sprint.",
+        "To measure individual developer performance and assign velocity scores."
       ],
       "correct": 0,
-      "explanation": "Management reserve is for unidentified risks (unknown-unknowns), while contingency reserve is for identified risks."
+      "explanation": "Stakeholder review happens in the Sprint Review. The Retrospective focuses entirely on team dynamics, tools, and processes (internal reflection)."
     },
     {
       "id": 10,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is the purpose of a RACI matrix?",
+      "topic": "Agile & Scrum",
+      "difficulty": "hard",
+      "question": "A team calculates their average velocity is 40 points per sprint. The Product Owner instructs them to pull 50 points into the next sprint to meet a deadline. What is the correct Scrum response?",
       "options": [
-        "Define roles: Responsible, Accountable, Consulted, Informed",
-        "Track project budget",
-        "Schedule meetings",
-        "Document requirements"
+        "The Scrum Master must authorize the scope increase.",
+        "The Developers alone decide how many items they pull into the Sprint Backlog.",
+        "The team accepts 50 points but negotiates to skip writing documentation.",
+        "The Product Owner is allowed to enforce scope as they represent the stakeholders."
       ],
-      "correct": 0,
-      "explanation": "RACI matrix clarifies roles and responsibilities for each task or deliverable."
+      "correct": 1,
+      "explanation": "A major misconception is that Product Owners dictate sprint workload. The Product Owner prioritizes the WHAT. Developers exclusively determine exactly HOW MUCH work they can realistically pull into the sprint."
     },
     {
       "id": 11,
-      "topic": "Agile & Scrum",
-      "difficulty": "easy",
-      "question": "What are the three Scrum roles?",
+      "topic": "Version Control & Git",
+      "difficulty": "medium",
+      "question": "You execute 'git commit --amend' on a commit you already pushed to a shared remote branch. What is the danger of this?",
       "options": [
-        "Product Owner, Scrum Master, Development Team",
-        "Project Manager, Business Analyst, Developers",
-        "Stakeholder, Client, Team Lead",
-        "Manager, Developer, Tester"
+        "It permanently deletes all files modified in the commit.",
+        "It triggers an automatic conflict resolution wizard that locks the remote.",
+        "It changes the commit hash, causing history divergence for anyone else who pulled the branch.",
+        "It removes the commit message and replaces it with a blank string."
       ],
-      "correct": 0,
-      "explanation": "Scrum defines three roles: Product Owner (maximizes value), Scrum Master (facilitates process), Development Team (creates product)."
+      "correct": 2,
+      "explanation": "Amending rewrites history, creating a brand new commit object with a new hash. If someone else already pulled the old commit, pushing the amended one will cause severely tangled, divergent histories."
     },
     {
       "id": 12,
-      "topic": "Agile & Scrum",
-      "difficulty": "easy",
-      "question": "What is a Sprint?",
+      "topic": "Version Control & Git",
+      "difficulty": "hard",
+      "question": "Which of the following accurately describes the behavior of 'git fetch'?",
       "options": [
-        "Fixed-length iteration (1-4 weeks) producing potentially shippable increment",
-        "Daily meeting",
-        "Project phase",
-        "Documentation sprint"
+        "It downloads new data from the remote repository and updates your remote-tracking branches, but leaves your working directory untouched.",
+        "It downloads remote changes and immediately updates your active working directory files to match the remote.",
+        "It automatically resolves merge conflicts between your local branch and the remote branch.",
+        "It uploads your local commits to the remote tracking branch."
       ],
       "correct": 0,
-      "explanation": "A Sprint is a consistent time-boxed iteration delivering a potentially releasable product increment."
+      "explanation": "A common misconception is that fetch behaves like pull. Fetch only updates your hidden origin/ branch pointers; it does NOT merge anything into your current local working directory files. 'git pull' = 'git fetch' + 'git merge'."
     },
     {
       "id": 13,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "Name the five Scrum ceremonies.",
+      "topic": "Version Control & Git",
+      "difficulty": "hard",
+      "question": "You realize you accidentally added a 5GB video file to Git 10 commits ago. Deleting the file and committing the deletion doesn't reduce the .git folder size. Why?",
       "options": [
-        "Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Backlog Refinement",
-        "Planning, Development, Testing, Demo, Retrospective",
-        "Kickoff, Standup, Demo, Retro, Grooming",
-        "Sprint Planning, Daily Standup, Sprint Demo, Sprint Retro, Grooming"
+        "Because git tracks file deletions as hidden tags rather than removing the data.",
+        "Because the file still exists in the historical commit snapshots, so Git must retain its data permanently.",
+        "Because git automatically forces large files into Git LFS which ignores local deletions.",
+        "Because you must restart the Git daemon to clear the local garbage collection cache."
       ],
-      "correct": 0,
-      "explanation": "The 5 official Scrum events: Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, and Product Backlog Refinement."
+      "correct": 1,
+      "explanation": "Git is an immutable history ledger. Deleting a file in commit #11 doesn't erase it from commit #10. The binary blob remains in `.git/objects` forever unless you actively rewrite history (e.g., git filter-repo)."
     },
     {
       "id": 14,
-      "topic": "Agile & Scrum",
+      "topic": "Version Control & Git",
       "difficulty": "medium",
-      "question": "What is the maximum recommended duration of a Sprint?",
-      "options": ["1 month", "2 weeks", "6 weeks", "3 months"],
-      "correct": 0,
-      "explanation": "Sprint length is maximum one month. Most teams use 2 weeks for better feedback cycles."
+      "question": "What specifically causes a 'merge conflict' in Git?",
+      "options": [
+        "Pushing a branch to a remote server without holding write permissions.",
+        "Attempting to merge code when local formatting standard linters fail.",
+        "Git encountering differing modifications on the exact same lines of the same file from two different branches.",
+        "Trying to merge a branch that was created more than 30 days ago."
+      ],
+      "correct": 2,
+      "explanation": "Merge conflicts strictly occur when developers alter the exact same lines of code (or one edits a file while the other deletes it), making it impossible for Git to safely guess which version to keep."
     },
     {
       "id": 15,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is the purpose of Sprint Retrospective?",
+      "topic": "Version Control & Git",
+      "difficulty": "hard",
+      "question": "You are halfway through a messy feature but need to urgently switch branches to fix a bug in production. You do not want to commit broken code. Which Git feature allows you to cleanly switch context?",
       "options": [
-        "Inspect team process and plan improvements",
-        "Show stakeholders completed work",
-        "Plan next sprint's work",
-        "Assign tasks"
+        "git rebase",
+        "git cherry-pick",
+        "git stash",
+        "git reset --soft"
       ],
-      "correct": 0,
-      "explanation": "Sprint Retrospective is for the Scrum Team to inspect itself and create improvement plan."
+      "correct": 2,
+      "explanation": "Git stash is specifically designed to safely shelve your dirty working directory modifications onto a temporary clipboard, restoring a clean state so you can change branches safely."
     },
     {
       "id": 16,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is the difference between Epic, Feature, and User Story?",
+      "topic": "Risk & Requirements",
+      "difficulty": "medium",
+      "question": "Which statement best exemplifies a Non-Functional Requirement (NFR)?",
       "options": [
-        "Epic > Feature > Story in scope hierarchy",
-        "Feature > Epic > Story",
-        "They are the same",
-        "Story > Feature > Epic"
+        "The system must email a PDF receipt to the user within 2 seconds of purchase.",
+        "The payment API must accept Visa, Mastercard, and American Express.",
+        "The database must support a minimum of 5,000 concurrent read operations without latency exceeding 200ms.",
+        "The admin dashboard must include a button to suspend inactive user accounts."
       ],
-      "correct": 0,
-      "explanation": "Epic is large initiative, broken into Features, broken into User Stories (smallest unit of delivery)."
+      "correct": 2,
+      "explanation": "Functional requirements define 'what' the system does (features like emailing or accepting cards). NFRs define 'how well' it performs (scale, speed, security, concurrent limits)."
     },
     {
       "id": 17,
-      "topic": "Agile & Scrum",
+      "topic": "Risk & Requirements",
       "difficulty": "hard",
-      "question": "What is the key difference between Agile and Scrum?",
+      "question": "During a risk assessment, a team notes that a third-party server goes down rarely, but if it does, the company loses $100,000 an hour. They decide to purchase an external SLA insurance policy to cover outage losses. What risk strategy is this?",
       "options": [
-        "Agile is mindset; Scrum is framework implementing Agile",
-        "Agile for software; Scrum for hardware",
-        "Scrum is more flexible",
-        "They are identical"
+        "Risk Avoidance",
+        "Risk Mitigation",
+        "Risk Acceptance",
+        "Risk Transference"
       ],
-      "correct": 0,
-      "explanation": "Agile is a mindset/values. Scrum is a specific framework with roles, events, and artifacts that implements Agile."
+      "correct": 3,
+      "explanation": "Transference shifts the financial or operational impact of the risk entirely to a third party (like an insurance company or outsourced vendor). They didn't avoid the outage, they merely transferred liability."
     },
     {
       "id": 18,
-      "topic": "Agile & Scrum",
+      "topic": "Risk & Requirements",
       "difficulty": "medium",
-      "question": "What is 'Velocity' in Scrum?",
+      "question": "In MoSCoW prioritization, what occurs if an item classified as a 'Could Have' is not completed by the release date?",
       "options": [
-        "Work completed per sprint (story points)",
-        "Code writing speed",
-        "Product owner response time",
-        "Number of sprints"
+        "The release is marked as a failure and the project is audited.",
+        "The product is still considered a success, as 'Could Haves' are exclusively nice-to-have bonuses.",
+        "The team must automatically transition into an emergency sprint to complete it.",
+        "The Product Owner must halt the release entirely until the requirements trace is updated."
       ],
-      "correct": 0,
-      "explanation": "Velocity measures amount of work team completes in a sprint, used for future sprint planning."
+      "correct": 1,
+      "explanation": "'Could Have' items are technically possible but not critical for core launch functionality. Skipping them does not constitute project failure; it's exactly why prioritization exists."
     },
     {
       "id": 19,
-      "topic": "Agile & Scrum",
+      "topic": "Risk & Requirements",
       "difficulty": "hard",
-      "question": "What is 'Definition of Done' (DoD)?",
+      "question": "A stakeholder demands that 'The software must be user-friendly.' What is the fundamental flaw with this requirement?",
       "options": [
-        "Shared understanding of completeness criteria",
-        "Task deadline",
-        "Pull request acceptance criteria",
-        "Sprint length"
+        "It focuses on the user interface instead of the backend logic.",
+        "It lacks a strict priority ranking against functional requirements.",
+        "It is fundamentally unmeasurable and unverifiable through objective testing.",
+        "It uses passive voice instead of active agile story phrasing."
       ],
-      "correct": 0,
-      "explanation": "DoD is clear criteria that must be met before increment is complete and potentially shippable."
+      "correct": 2,
+      "explanation": "A core attribute of a valid requirement is testability. 'User-friendly' means nothing objectively. It must specify metrics like 'Users can locate X in under 3 clicks'."
     },
     {
       "id": 20,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is the role of the Product Owner?",
+      "topic": "Risk & Requirements",
+      "difficulty": "hard",
+      "question": "A team completely removes an inherently insecure legacy file-sharing feature from their upcoming software to ensure hackers cannot exploit it. What risk response strategy did they employ?",
       "options": [
-        "Maximize product value and manage backlog",
-        "Facilitate Scrum process",
-        "Develop code",
-        "Manage team performance"
+        "Risk Mitigation",
+        "Risk Acceptance",
+        "Risk Transference",
+        "Risk Avoidance"
       ],
-      "correct": 0,
-      "explanation": "Product Owner is responsible for maximizing product value and managing Product Backlog."
+      "correct": 3,
+      "explanation": "A common misconception is calling this 'Mitigation'. By completely removing the feature from the plan, the threat is 100% physically eliminated. This is pure Risk Avoidance."
     },
     {
       "id": 21,
-      "topic": "Agile & Scrum",
-      "difficulty": "easy",
-      "question": "What happens in Daily Scrum?",
+      "topic": "Software Testing",
+      "difficulty": "hard",
+      "question": "A developer runs the code coverage tool and boasts a 95% line coverage rate. Does this guarantee the software is fundamentally bug-free?",
       "options": [
-        "15-minute sync to plan next 24 hours",
-        "Status report to manager",
-        "Code review session",
-        "Sprint planning"
+        "Yes, anything above 90% mathematically ensures all edge cases execute flawlessly.",
+        "No, coverage simply proves lines executed; it does not prove the logic validates edge cases or produces correct business values.",
+        "Yes, but only if the tests are written using White-Box instead of Black-Box methodologies.",
+        "No, because line coverage ignores database latency testing."
       ],
-      "correct": 0,
-      "explanation": "Daily Scrum is a 15-minute event for Developers to inspect progress toward Sprint Goal."
+      "correct": 1,
+      "explanation": "High code coverage is a deceptive metric. A test can execute 100% of the lines of a function but contain absolutely zero 'assert' statements, missing logical flaws entirely."
     },
     {
       "id": 22,
-      "topic": "Agile & Scrum",
+      "topic": "Software Testing",
       "difficulty": "medium",
-      "question": "What is 'Timeboxing' in Scrum?",
+      "question": "Which testing type deliberately modifies the application's source code by introducing explicit bugs, specifically targeting whether or not the test suite catches them?",
       "options": [
-        "Fixed maximum duration for events",
-        "Time tracking tool",
-        "Deadline management",
-        "Scheduling technique"
+        "Regression Testing",
+        "Mutation Testing",
+        "Exploratory Testing",
+        "Sanity Testing"
       ],
-      "correct": 0,
-      "explanation": "Timeboxing sets fixed maximum duration for Scrum events to ensure focus and efficiency."
+      "correct": 1,
+      "explanation": "Mutation testing literally 'mutates' the source code (like changing an > operator to <). If your tests still pass, your tests are weak. It tests the tests, not the app."
     },
     {
       "id": 23,
-      "topic": "Agile & Scrum",
+      "topic": "Software Testing",
       "difficulty": "hard",
-      "question": "What is 'Impediment' in Scrum?",
+      "question": "When utilizing Boundary Value Analysis for a text input that physically accepts 1 to 10 characters, which precise test values provide the highest logical yield?",
       "options": [
-        "Anything hindering Development Team progress",
-        "Technical debt",
-        "Bug in code",
-        "Missing requirement"
+        "3, 5, 7, and 9 characters",
+        "Testing strings of 100 characters and 1000 characters",
+        "0, 1, 10, and 11 characters",
+        "Using randomized alphanumeric strings of length 5"
       ],
-      "correct": 0,
-      "explanation": "Impediment is anything that prevents Development Team from being productive. Scrum Master removes impediments."
+      "correct": 2,
+      "explanation": "BVA focuses explicitly on the knife edge. Errors occur because developers use <= instead of <. Testing immediately inside and outside the threshold (0, 1, 10, 11) exposes these off-by-one errors."
     },
     {
       "id": 24,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is Sprint Burndown Chart?",
+      "topic": "Software Testing",
+      "difficulty": "hard",
+      "question": "A QA engineer tests a login screen by attempting to inject malicious SQL commands ('OR 1=1') into the password field without looking at the backend Python code. What testing technique is this?",
       "options": [
-        "Graph showing remaining work vs time",
-        "Team velocity history",
-        "Product backlog visualization",
-        "Burnup chart alternative"
+        "White-Box Integration Testing",
+        "Gray-Box Unit Testing",
+        "Black-Box Security Testing",
+        "Static Code Analysis"
       ],
-      "correct": 0,
-      "explanation": "Burndown chart shows remaining work in Sprint backlog over time, helping track progress."
+      "correct": 2,
+      "explanation": "Because the tester interacts strictly with the external interface and has no view of the internal logic or source code, this is definitively a Black-box approach to security testing."
     },
     {
       "id": 25,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is the difference between Sprint Goal and Sprint Backlog?",
-      "options": [
-        "Goal is the objective; Backlog is the set of selected work items",
-        "Backlog is the objective; Goal tracks progress",
-        "They are the same",
-        "Goal is set by PO; Backlog by team"
-      ],
-      "correct": 0,
-      "explanation": "Sprint Goal is the objective. Sprint Backlog is the set of Product Backlog items selected plus plan to achieve Goal."
-    },
-    {
-      "id": 26,
-      "topic": "Version Control & Git",
-      "difficulty": "easy",
-      "question": "What command initializes a new Git repository?",
-      "options": ["git init", "git new", "git create", "git start"],
-      "correct": 0,
-      "explanation": "git init creates a new empty Git repository in current directory."
-    },
-    {
-      "id": 27,
-      "topic": "Version Control & Git",
-      "difficulty": "easy",
-      "question": "What does git commit do?",
-      "options": [
-        "Saves snapshot to local repository",
-        "Pushes to remote",
-        "Shows changes",
-        "Creates branch"
-      ],
-      "correct": 0,
-      "explanation": "git commit creates a permanent snapshot of current staged changes in local repository."
-    },
-    {
-      "id": 28,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What is the difference between git merge and git rebase?",
-      "options": [
-        "Merge creates merge commit; Rebase rewrites history linearly",
-        "Rebase is faster",
-        "Merge for branches only",
-        "No difference"
-      ],
-      "correct": 0,
-      "explanation": "git merge preserves branch history with merge commit. git rebase creates linear history by replaying commits."
-    },
-    {
-      "id": 29,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does git fetch do vs git pull?",
-      "options": [
-        "fetch downloads only; pull fetches + merges",
-        "fetch is faster",
-        "pull for branches",
-        "They are identical"
-      ],
-      "correct": 0,
-      "explanation": "git fetch downloads remote changes without merging. git pull = git fetch + git merge."
-    },
-    {
-      "id": 30,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does 'detached HEAD' state mean?",
-      "options": [
-        "HEAD points to specific commit, not branch",
-        "Repository corrupted",
-        "Uncommitted changes exist",
-        "On remote branch"
-      ],
-      "correct": 0,
-      "explanation": "Detached HEAD occurs when HEAD points directly to a commit rather than a branch reference."
-    },
-    {
-      "id": 31,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is git cherry-pick used for?",
-      "options": [
-        "Apply specific commits from one branch to another",
-        "Select best commit message",
-        "Choose files to commit",
-        "Select branches to merge"
-      ],
-      "correct": 0,
-      "explanation": "git cherry-pick applies changes introduced by specific commit(s) onto current branch."
-    },
-    {
-      "id": 32,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What does git bisect do?",
-      "options": [
-        "Binary search to find bug-introducing commit",
-        "Bisect files for changes",
-        "Split commit",
-        "Merge branches"
-      ],
-      "correct": 0,
-      "explanation": "git bisect uses binary search through commit history to find which commit introduced a bug."
-    },
-    {
-      "id": 33,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What is the purpose of .gitignore file?",
-      "options": [
-        "Specify intentionally untracked files to ignore",
-        "Ignore remote branches",
-        "Prevent commits",
-        "Log ignored changes"
-      ],
-      "correct": 0,
-      "explanation": ".gitignore lists patterns for files Git should ignore, preventing accidental commits."
-    },
-    {
-      "id": 34,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does git stash do?",
-      "options": [
-        "Temporarily saves uncommitted changes",
-        "Deletes uncommitted changes",
-        "Commits to stash branch",
-        "Creates backup"
-      ],
-      "correct": 0,
-      "explanation": "git stash temporarily shelves changes in working directory, allowing you to switch branches."
-    },
-    {
-      "id": 35,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is the difference between fast-forward merge and 3-way merge?",
-      "options": [
-        "Fast-forward when no divergence; 3-way when branches diverged",
-        "3-way is faster",
-        "Fast-forward for local only",
-        "No difference"
-      ],
-      "correct": 0,
-      "explanation": "Fast-forward merge moves branch pointer forward when no new commits on target. 3-way merge creates merge commit when branches diverged."
-    },
-    {
-      "id": 36,
-      "topic": "Risk & Requirements",
-      "difficulty": "easy",
-      "question": "What are the two main types of requirements?",
-      "options": [
-        "Functional and Non-functional",
-        "Technical and Business",
-        "User and System",
-        "High-level and Low-level"
-      ],
-      "correct": 0,
-      "explanation": "Functional requirements describe what system does. Non-functional describe how well (performance, security, etc.)."
-    },
-    {
-      "id": 37,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What does RAID stand for?",
-      "options": [
-        "Risks, Assumptions, Issues, Dependencies",
-        "Requirements, Actions, Issues, Decisions",
-        "Results, Actions, Inputs, Deliverables",
-        "Risks, Actions, Inputs, Decisions"
-      ],
-      "correct": 0,
-      "explanation": "RAID log tracks Risks, Assumptions, Issues, and Dependencies throughout project."
-    },
-    {
-      "id": 38,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is risk mitigation?",
-      "options": [
-        "Reduce probability and/or impact of risk",
-        "Eliminate all risks",
-        "Accept and handle if occurs",
-        "Transfer to another party"
-      ],
-      "correct": 0,
-      "explanation": "Risk mitigation proactively reduces either probability or impact of identified risk."
-    },
-    {
-      "id": 39,
-      "topic": "Risk & Requirements",
-      "difficulty": "hard",
-      "question": "Distinguish between Risk Avoidance and Risk Transference.",
-      "options": [
-        "Avoidance eliminates; Transference shifts to third party",
-        "Avoidance cheaper; Transference expensive",
-        "Avoidance for threats; Transference for opportunities",
-        "They're identical"
-      ],
-      "correct": 0,
-      "explanation": "Risk avoidance eliminates threat. Risk transference shifts impact to third party (insurance, outsourcing)."
-    },
-    {
-      "id": 40,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is MoSCoW prioritization?",
-      "options": [
-        "Must, Should, Could, Won't have",
-        "Most critical, Somewhat, Could wait, Not needed",
-        "Major, Optional, Small, Cancelled",
-        "Minimum, Standard, Comprehensive, Optional"
-      ],
-      "correct": 0,
-      "explanation": "MoSCoW: Must have (essential), Should have (important), Could have (nice), Won't have (this time)."
-    },
-    {
-      "id": 41,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is the difference between risk appetite and risk tolerance?",
-      "options": [
-        "Appetite: amount willing to accept; Tolerance: acceptable deviation from appetite",
-        "Same meaning",
-        "Appetite for threats; Tolerance for opportunities",
-        "Tolerance by team; Appetite by management"
-      ],
-      "correct": 0,
-      "explanation": "Risk appetite = amount of risk organization will accept. Risk tolerance = acceptable deviation from appetite."
-    },
-    {
-      "id": 42,
-      "topic": "Risk & Requirements",
-      "difficulty": "hard",
-      "question": "What is a 'Risk Register'?",
-      "options": [
-        "Document tracking all identified risks and responses",
-        "List of risk owners",
-        "Financial risk assessment",
-        "Probability distribution chart"
-      ],
-      "correct": 0,
-      "explanation": "Risk register documents all identified risks, their analysis, and planned response strategies."
-    },
-    {
-      "id": 43,
-      "topic": "Risk & Requirements",
-      "difficulty": "easy",
-      "question": "What are 'Stakeholders'?",
-      "options": [
-        "Anyone affected by or influencing the project",
-        "Only the client",
-        "Project team only",
-        "Senior management"
-      ],
-      "correct": 0,
-      "explanation": "Stakeholders are individuals, groups, or organizations that can affect or be affected by project."
-    },
-    {
-      "id": 44,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is 'Risk Probability' vs 'Risk Impact'?",
-      "options": [
-        "Probability: likelihood; Impact: consequence severity",
-        "Probability: financial; Impact: timeline",
-        "Same concept",
-        "Probability for threats; Impact for opportunities"
-      ],
-      "correct": 0,
-      "explanation": "Probability = likelihood risk occurs. Impact = effect on objectives if risk occurs."
-    },
-    {
-      "id": 45,
-      "topic": "Software Testing",
-      "difficulty": "easy",
-      "question": "What is the difference between verification and validation?",
-      "options": [
-        "Verification: building right; Validation: building right product",
-        "Verification: building right product; Validation: building right",
-        "Verification manual; Validation automated",
-        "No difference"
-      ],
-      "correct": 0,
-      "explanation": "Verification = Are we building product right? (meets specs). Validation = Are we building right product? (meets needs)."
-    },
-    {
-      "id": 46,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What are the four levels of testing?",
-      "options": [
-        "Unit, Integration, System, Acceptance",
-        "White-box, Black-box, Gray-box",
-        "Static, Dynamic",
-        "Functional, Non-functional"
-      ],
-      "correct": 0,
-      "explanation": "Four levels: Unit (individual), Integration (interactions), System (complete), Acceptance (user)."
-    },
-    {
-      "id": 47,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is regression testing?",
-      "options": [
-        "Ensure new changes don't break existing functionality",
-        "Test after modification",
-        "Performance testing",
-        "Developer self-testing"
-      ],
-      "correct": 0,
-      "explanation": "Regression testing verifies recent changes haven't adversely affected existing functionality."
-    },
-    {
-      "id": 48,
       "topic": "Software Testing",
       "difficulty": "hard",
-      "question": "What is difference between black-box and white-box testing?",
+      "question": "You fixed a minor typo in the CSS navigation bar. You trigger the CI pipeline, and it automatically reruns all 5,000 backend database logic tests. What principle validates this behavior?",
       "options": [
-        "Black-box tests functionality; White-box tests internal structure",
-        "Black-box manual; White-box automated",
-        "Black-box unit; White-box system",
-        "No difference"
+        "Continuous Integration dictates that all tests must pass to prevent merge conflicts.",
+        "Regression testing assumes any change, no matter how small, has the potential to break seemingly unrelated functionality.",
+        "Integration tests strictly require front-end DOM elements to validate backend API tokens.",
+        "Sanity testing demands that the entire platform validates every time a user logs in."
       ],
-      "correct": 0,
-      "explanation": "Black-box tests without internal code knowledge. White-box tests internal logic, paths, and structure."
-    },
-    {
-      "id": 49,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is smoke testing?",
-      "options": [
-        "Quick test verifying basic functionality after build",
-        "Performance under load",
-        "Security vulnerability scan",
-        "Exhaustive feature testing"
-      ],
-      "correct": 0,
-      "explanation": "Smoke test verifies critical functions work, ensuring build is stable enough for further testing."
-    },
-    {
-      "id": 50,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is sanity testing?",
-      "options": [
-        "Focused testing to verify specific functionality",
-        "Same as smoke testing",
-        "Extensive testing",
-        "User acceptance testing"
-      ],
-      "correct": 0,
-      "explanation": "Sanity testing is narrow, deep testing of specific functionality after minor changes."
-    },
-    {
-      "id": 51,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is the difference between retesting and regression testing?",
-      "options": [
-        "Retesting: test failed cases after fix; Regression: ensure no new defects",
-        "Retesting is automated; Regression manual",
-        "Regression for fixed bugs; Retesting for new features",
-        "No difference"
-      ],
-      "correct": 0,
-      "explanation": "Retesting verifies fixed defects. Regression testing ensures fixes didn't break anything else."
-    },
-    {
-      "id": 52,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is Alpha testing?",
-      "options": [
-        "Testing by internal team before external release",
-        "Testing by end users at developer site",
-        "Testing in production",
-        "Automated testing"
-      ],
-      "correct": 0,
-      "explanation": "Alpha testing is internal testing by developers/testers before releasing to external users."
-    },
-    {
-      "id": 53,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is Beta testing?",
-      "options": [
-        "Testing by real users in real environment before release",
-        "Final testing phase",
-        "Performance testing",
-        "Security testing"
-      ],
-      "correct": 0,
-      "explanation": "Beta testing is external user acceptance testing in real environment before final release."
-    },
-    {
-      "id": 54,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is equivalence partitioning?",
-      "options": [
-        "Divide input data into valid/invalid partitions for testing",
-        "Group similar test cases",
-        "Partition code modules",
-        "Test environment segmentation"
-      ],
-      "correct": 0,
-      "explanation": "Equivalence partitioning groups input data that should be treated similarly, reducing test cases needed."
-    },
-    {
-      "id": 55,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is boundary value analysis?",
-      "options": [
-        "Test at boundaries between partitions (min, max, just inside/outside)",
-        "Test average values",
-        "Test only valid ranges",
-        "Test random values"
-      ],
-      "correct": 0,
-      "explanation": "BVA tests values at boundaries (minimum, maximum, just inside/outside boundaries) where errors commonly occur."
-    },
-    {
-      "id": 56,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is test coverage?",
-      "options": [
-        "Percentage of code exercised by tests",
-        "Number of test cases",
-        "Test execution time",
-        "Bug detection rate"
-      ],
-      "correct": 0,
-      "explanation": "Test coverage measures what percentage of codebase is executed during test runs."
-    },
-    {
-      "id": 57,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is mutation testing?",
-      "options": [
-        "Introduce small bugs to verify test suite detects them",
-        "Test with mutated data",
-        "Random testing",
-        "Stress testing"
-      ],
-      "correct": 0,
-      "explanation": "Mutation testing modifies code slightly (mutants) to check if test suite can detect the changes."
-    },
-    {
-      "id": 58,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is exploratory testing?",
-      "options": [
-        "Simultaneous learning, test design, and execution",
-        "Scripted test execution",
-        "Automated test runs",
-        "Manual only testing"
-      ],
-      "correct": 0,
-      "explanation": "Exploratory testing combines test design and execution simultaneously, learning about product as you test."
-    },
-    {
-      "id": 59,
-      "topic": "Software Testing",
-      "difficulty": "easy",
-      "question": "What is a test case?",
-      "options": [
-        "Specific set of inputs and expected outputs",
-        "Test script",
-        "Test plan document",
-        "Bug report"
-      ],
-      "correct": 0,
-      "explanation": "Test case defines specific inputs, execution conditions, and expected results for a single test."
-    },
-    {
-      "id": 60,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is test-driven development (TDD)?",
-      "options": [
-        "Write tests before production code",
-        "Test after development",
-        "Test by QA only",
-        "Test without code"
-      ],
-      "correct": 0,
-      "explanation": "TDD cycle: write failing test, write code to pass, refactor. Red-Green-Refactor pattern."
-    },
-    {
-      "id": 61,
-      "topic": "Version Control & Git",
-      "difficulty": "easy",
-      "question": "What command stages all changes?",
-      "options": ["git add .", "git stage all", "git commit -a", "git add *"],
-      "correct": 0,
-      "explanation": "git add . stages all modified and new files in current directory recursively."
-    },
-    {
-      "id": 62,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does 'git branch -d' do?",
-      "options": [
-        "Deletes branch (only if merged)",
-        "Force deletes branch",
-        "Creates branch",
-        "Renames branch"
-      ],
-      "correct": 0,
-      "explanation": "git branch -d deletes branch safely only if it's fully merged. Use -D to force delete."
-    },
-    {
-      "id": 63,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is 'git rebase -i' (interactive rebase) used for?",
-      "options": [
-        "Rewrite commit history: edit, squash, reorder commits",
-        "Interactive merge",
-        "Interactive fetch",
-        "Interactive cherry-pick"
-      ],
-      "correct": 0,
-      "explanation": "Interactive rebase allows editing, squashing, reordering, or dropping commits to clean history."
-    },
-    {
-      "id": 64,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does 'git reset --hard' do?",
-      "options": [
-        "Reset working tree and index to HEAD (destroys uncommitted changes)",
-        "Reset only index",
-        "Soft reset (keeps changes)",
-        "Create backup branch"
-      ],
-      "correct": 0,
-      "explanation": "git reset --hard resets both index and working directory to match HEAD, discarding all uncommitted changes."
-    },
-    {
-      "id": 65,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is the purpose of 'git reflog'?",
-      "options": [
-        "Record of all HEAD movements (recover lost commits)",
-        "Show commit log with references",
-        "Track file changes",
-        "Find remote branches"
-      ],
-      "correct": 0,
-      "explanation": "reflog records when HEAD and branch tips changed, useful for recovering lost or orphaned commits."
-    },
-    {
-      "id": 66,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does 'git remote -v' show?",
-      "options": [
-        "List remote repositories with URLs",
-        "Show remote branches",
-        "Show all tags",
-        "Show commit history"
-      ],
-      "correct": 0,
-      "explanation": "git remote -v lists all remotes with their fetch and push URLs."
-    },
-    {
-      "id": 67,
-      "topic": "Version Control & Git",
-      "difficulty": "easy",
-      "question": "What command pushes current branch to remote?",
-      "options": ["git push origin HEAD", "git push", "git send", "git upload"],
-      "correct": 0,
-      "explanation": "git push origin HEAD pushes current branch to remote repository."
-    },
-    {
-      "id": 68,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What is a 'merge conflict'?",
-      "options": [
-        "Git cannot automatically merge changes due to modifications in same lines",
-        "Two branches with same name",
-        "Repository corruption",
-        "Network connectivity issue"
-      ],
-      "correct": 0,
-      "explanation": "Merge conflict occurs when changes in different branches affect same part of file and Git cannot merge automatically."
-    },
-    {
-      "id": 69,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is 'git submodule' used for?",
-      "options": [
-        "Include external repository as subdirectory",
-        "Create nested commits",
-        "Track subdirectories",
-        "Multiple working directories"
-      ],
-      "correct": 0,
-      "explanation": "Git submodule embeds external repository as subdirectory while maintaining separate history."
-    },
-    {
-      "id": 70,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does 'git diff --staged' show?",
-      "options": [
-        "Differences between staged changes and HEAD",
-        "All uncommitted changes",
-        "Differences between branches",
-        "Changes in last commit"
-      ],
-      "correct": 0,
-      "explanation": "git diff --staged (or --cached) shows changes that are staged but not yet committed."
-    },
-    {
-      "id": 71,
-      "topic": "Agile & Scrum",
-      "difficulty": "easy",
-      "question": "What is a 'User Story'?",
-      "options": [
-        "Simple description of feature from user perspective",
-        "Technical specification",
-        "Project requirement",
-        "Design document"
-      ],
-      "correct": 0,
-      "explanation": "User Story follows format: 'As a [type of user], I want [goal] so that [benefit]'."
-    },
-    {
-      "id": 72,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is 'Story Point'?",
-      "options": [
-        "Relative effort estimation unit",
-        "Time in hours",
-        "Task priority",
-        "Bug severity"
-      ],
-      "correct": 0,
-      "explanation": "Story points estimate relative effort/complexity of user stories, not exact time."
-    },
-    {
-      "id": 73,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is 'Backlog Refinement' (Grooming)?",
-      "options": [
-        "Ongoing activity to review and prioritize backlog items",
-        "Code cleanup",
-        "Database optimization",
-        "Documentation update"
-      ],
-      "correct": 0,
-      "explanation": "Backlog refinement is ongoing process of reviewing, detailing, estimating, and prioritizing backlog items."
-    },
-    {
-      "id": 74,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is 'Technical Debt'?",
-      "options": [
-        "Additional development work from taking shortcuts",
-        "Financial debt",
-        "Unpaid invoices",
-        "Team skill gaps"
-      ],
-      "correct": 0,
-      "explanation": "Technical debt is implied cost of future rework from choosing easy/short-term solutions now."
-    },
-    {
-      "id": 75,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is 'Burndown Chart'?",
-      "options": [
-        "Graph showing remaining work over time",
-        "Team velocity trend",
-        "Completed features list",
-        "Budget usage chart"
-      ],
-      "correct": 0,
-      "explanation": "Burndown chart visualizes remaining work vs time, helping track sprint progress."
-    },
-    {
-      "id": 76,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is 'Daily Standup' purpose?",
-      "options": [
-        "Synchronize work and identify impediments (15 min)",
-        "Detailed status report",
-        "Problem solving session",
-        "Planning meeting"
-      ],
-      "correct": 0,
-      "explanation": "Daily Scrum is 15-minute sync for Developers to inspect progress toward Sprint Goal."
-    },
-    {
-      "id": 77,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is the 'Increment' in Scrum?",
-      "options": [
-        "Sum of all completed Product Backlog items in Sprint",
-        "Partially done work",
-        "Product backlog items",
-        "Sprint plan"
-      ],
-      "correct": 0,
-      "explanation": "Increment is the sum of all completed Product Backlog items during Sprint plus previous increments."
-    },
-    {
-      "id": 78,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is 'Swarming' in Agile?",
-      "options": [
-        "Multiple team members collaborate on single item",
-        "Individual task assignment",
-        "Random task selection",
-        "Sequential work"
-      ],
-      "correct": 0,
-      "explanation": "Swarming occurs when team focuses collectively on one item to complete it faster."
-    },
-    {
-      "id": 79,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is the difference between Product Backlog and Sprint Backlog?",
-      "options": [
-        "Product: all requirements; Sprint: selected items for current sprint",
-        "Sprint: all requirements; Product: current sprint",
-        "They are same",
-        "Product is technical; Sprint is business"
-      ],
-      "correct": 0,
-      "explanation": "Product Backlog contains all requirements. Sprint Backlog contains items selected for current Sprint plus plan."
-    },
-    {
-      "id": 80,
-      "topic": "Agile & Scrum",
-      "difficulty": "easy",
-      "question": "Who is responsible for prioritizing the Product Backlog?",
-      "options": ["Product Owner", "Scrum Master", "Development Team", "Stakeholders"],
-      "correct": 0,
-      "explanation": "Product Owner exclusively prioritizes Product Backlog to maximize value."
-    },
-    {
-      "id": 81,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "easy",
-      "question": "What is a 'Project Charter'?",
-      "options": [
-        "Formal document authorizing project existence",
-        "Contract with client",
-        "Project schedule",
-        "Team agreement"
-      ],
-      "correct": 0,
-      "explanation": "Project Charter formally authorizes project and provides project manager authority."
-    },
-    {
-      "id": 82,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is 'Scope Creep'?",
-      "options": [
-        "Uncontrolled changes to project scope",
-        "Scope reduction",
-        "Scope validation",
-        "Scope baseline"
-      ],
-      "correct": 0,
-      "explanation": "Scope creep are uncontrolled changes without corresponding adjustments to time/cost/resources."
-    },
-    {
-      "id": 83,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What is 'Earned Value' (EV)?",
-      "options": [
-        "Budgeted cost of work actually performed",
-        "Actual cost incurred",
-        "Planned value",
-        "Total project budget"
-      ],
-      "correct": 0,
-      "explanation": "Earned Value (EV) is the value of work actually performed expressed in budgeted dollars."
-    },
-    {
-      "id": 84,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is 'Critical Chain' method?",
-      "options": [
-        "Schedule technique accounting for resource constraints",
-        "Risk management",
-        "Cost estimating",
-        "Quality control"
-      ],
-      "correct": 0,
-      "explanation": "Critical Chain adds resource constraints to critical path, focusing on resource-dependent tasks."
-    },
-    {
-      "id": 85,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What is 'Monte Carlo Simulation' in project management?",
-      "options": [
-        "Risk analysis using probability distributions",
-        "Scheduling technique",
-        "Cost estimation method",
-        "Quality sampling"
-      ],
-      "correct": 0,
-      "explanation": "Monte Carlo simulates project outcomes thousands of times using probability distributions for variables."
-    },
-    {
-      "id": 86,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is a 'Milestone'?",
-      "options": [
-        "Significant point/event in project with zero duration",
-        "Project phase gate",
-        "Deliverable due date",
-        "Team celebration"
-      ],
-      "correct": 0,
-      "explanation": "Milestones mark major achievements or events with zero duration, tracking progress."
-    },
-    {
-      "id": 87,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "easy",
-      "question": "What is the purpose of a 'Lessons Learned' document?",
-      "options": [
-        "Document successes/failures for future projects",
-        "Record meeting notes",
-        "Track team performance",
-        "Final report for client"
-      ],
-      "correct": 0,
-      "explanation": "Lessons Learned captures insights from project for organizational process improvement."
-    },
-    {
-      "id": 88,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is 'Three-Point Estimating'?",
-      "options": [
-        "Optimistic, Most likely, Pessimistic estimates",
-        "Best, Worst, Average case",
-        "High, Medium, Low complexity",
-        "Past, Present, Future"
-      ],
-      "correct": 0,
-      "explanation": "Three-point uses O/P/M estimates (PERT) to calculate expected value and account for uncertainty."
-    },
-    {
-      "id": 89,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What is 'Cost of Quality'?",
-      "options": [
-        "Prevention + appraisal + failure costs",
-        "Development cost only",
-        "Testing budget",
-        "Project profit margin"
-      ],
-      "correct": 0,
-      "explanation": "Cost of Quality includes prevention, appraisal (inspection), and failure costs (internal/external)."
-    },
-    {
-      "id": 90,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is 'Plan-do-check-act' (PDCA) cycle?",
-      "options": [
-        "Continuous improvement cycle",
-        "Risk management process",
-        "Testing methodology",
-        "Project phase sequence"
-      ],
-      "correct": 0,
-      "explanation": "PDCA (Deming cycle) is iterative management method for continuous improvement: Plan → Do → Check → Act."
-    },
-    {
-      "id": 91,
-      "topic": "Risk & Requirements",
-      "difficulty": "easy",
-      "question": "What are 'Functional Requirements'?",
-      "options": [
-        "What system should do (features, functions)",
-        "System performance characteristics",
-        "Technical architecture",
-        "Business goals"
-      ],
-      "correct": 0,
-      "explanation": "Functional requirements describe system behaviors, functions, and features."
-    },
-    {
-      "id": 92,
-      "topic": "Risk & Requirements",
-      "difficulty": "easy",
-      "question": "What are 'Non-functional Requirements'?",
-      "options": [
-        "How system performs (performance, security, usability)",
-        "Business requirements",
-        "User interface",
-        "Database schema"
-      ],
-      "correct": 0,
-      "explanation": "Non-functional requirements (quality attributes) describe system qualities: performance, security, reliability, etc."
-    },
-    {
-      "id": 93,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is 'Use Case'?",
-      "options": [
-        "Interaction scenario between actor and system",
-        "Data model diagram",
-        "Technical specification",
-        "Test plan"
-      ],
-      "correct": 0,
-      "explanation": "Use case describes how actor interacts with system to achieve specific goal."
-    },
-    {
-      "id": 94,
-      "topic": "Risk & Requirements",
-      "difficulty": "hard",
-      "question": "What is 'Requirements Traceability Matrix' (RTM)?",
-      "options": [
-        "Document mapping requirements to their sources and downstream items",
-        "Requirements prioritization matrix",
-        "Traceability of code changes",
-        "Testing coverage matrix"
-      ],
-      "correct": 0,
-      "explanation": "RTM traces requirements forward to design, code, tests, and backward to business needs."
-    },
-    {
-      "id": 95,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is 'Risk Register'?",
-      "options": [
-        "Living document tracking risks, responses, owners, status",
-        "List of risk categories",
-        "Risk probability chart",
-        "Escalation procedure"
-      ],
-      "correct": 0,
-      "explanation": "Risk register is primary risk documentation tool tracking description, probability, impact, response, owner."
-    },
-    {
-      "id": 96,
-      "topic": "Risk & Requirements",
-      "difficulty": "hard",
-      "question": "What is 'Quantitative Risk Analysis'?",
-      "options": [
-        "Numeric analysis of risk impact/probability using models",
-        "Qualitative categorization",
-        "Risk identification",
-        "Risk mitigation"
-      ],
-      "correct": 0,
-      "explanation": "Quantitative uses numeric values, Monte Carlo, decision trees to numerically analyze risks."
-    },
-    {
-      "id": 97,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is 'Risk Threshold'?",
-      "options": [
-        "Level of risk exposure organization is willing to accept",
-        "Maximum risk score",
-        "Risk probability cutoff",
-        "Risk impact limit"
-      ],
-      "correct": 0,
-      "explanation": "Risk threshold defines acceptable risk exposure level; above triggers response actions."
-    },
-    {
-      "id": 98,
-      "topic": "Risk & Requirements",
-      "difficulty": "hard",
-      "question": "What is 'Monte Carlo Simulation' for risk analysis?",
-      "options": [
-        "Computer simulation modeling uncertainty/risk",
-        "Risk probability calculation",
-        "Cost estimation",
-        "Schedule optimization"
-      ],
-      "correct": 0,
-      "explanation": "Monte Carlo runs thousands of simulations varying inputs to understand probability of different outcomes."
-    },
-    {
-      "id": 99,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is 'Risk Owner'?",
-      "options": [
-        "Person responsible for monitoring/managing specific risk",
-        "Project manager",
-        "Team lead",
-        "Stakeholder"
-      ],
-      "correct": 0,
-      "explanation": "Risk owner is designated person responsible for tracking and managing specific risk response."
-    },
-    {
-      "id": 100,
-      "topic": "Software Testing",
-      "difficulty": "easy",
-      "question": "What is 'Validation'?",
-      "options": [
-        "Are we building the right product?",
-        "Are we building the product right?",
-        "Are we building quality?",
-        "Are we building efficiently?"
-      ],
-      "correct": 0,
-      "explanation": "Validation ensures product meets user needs and intended use (building right product)."
-    },
-    {
-      "id": 101,
-      "topic": "Software Testing",
-      "difficulty": "easy",
-      "question": "What is 'Verification'?",
-      "options": [
-        "Are we building the product right?",
-        "Are we building the right product?",
-        "Are we building complete?",
-        "Are we building on time?"
-      ],
-      "correct": 0,
-      "explanation": "Verification ensures product meets specified requirements (building product right)."
-    },
-    {
-      "id": 102,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Integration Testing'?",
-      "options": [
-        "Testing interfaces and interactions between integrated components",
-        "Testing single module",
-        "Testing entire system",
-        "Testing with users"
-      ],
-      "correct": 0,
-      "explanation": "Integration testing checks data flow and interactions between integrated components/modules."
-    },
-    {
-      "id": 103,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'System Testing'?",
-      "options": [
-        "Testing complete integrated system for compliance",
-        "Testing individual components",
-        "Testing user interface only",
-        "Testing performance"
-      ],
-      "correct": 0,
-      "explanation": "System testing validates complete integrated system against functional and non-functional requirements."
-    },
-    {
-      "id": 104,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Condition Coverage'?",
-      "options": [
-        "Testing each boolean condition for true and false",
-        "Code line coverage",
-        "Branch coverage",
-        "Path coverage"
-      ],
-      "correct": 0,
-      "explanation": "Condition coverage ensures each condition in decision takes both true and false values at least once."
-    },
-    {
-      "id": 105,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Path Coverage'?",
-      "options": [
-        "Testing all possible execution paths through code",
-        "Testing all branches",
-        "Testing all statements",
-        "Testing all functions"
-      ],
-      "correct": 0,
-      "explanation": "Path coverage tests all possible routes through program code (control flow paths)."
-    },
-    {
-      "id": 106,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Static Testing'?",
-      "options": [
-        "Reviewing code/documents without executing them",
-        "Dynamic test execution",
-        "Performance testing",
-        "Automation testing"
-      ],
-      "correct": 0,
-      "explanation": "Static testing examines documents/code for defects without running the program (reviews, walkthroughs)."
-    },
-    {
-      "id": 107,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Dynamic Testing'?",
-      "options": [
-        "Testing by executing code",
-        "Document review only",
-        "Static analysis",
-        "Code inspection"
-      ],
-      "correct": 0,
-      "explanation": "Dynamic testing involves executing code with test inputs to verify actual behavior."
-    },
-    {
-      "id": 108,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Functional Testing'?",
-      "options": [
-        "Testing features and functionality against requirements",
-        "Testing performance",
-        "Testing security",
-        "Testing usability"
-      ],
-      "correct": 0,
-      "explanation": "Functional testing verifies each function works as per requirements specification."
-    },
-    {
-      "id": 109,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Non-functional Testing'?",
-      "options": [
-        "Testing performance, reliability, usability, etc.",
-        "Testing features",
-        "Testing requirements",
-        "Testing logic"
-      ],
-      "correct": 0,
-      "explanation": "Non-functional testing evaluates system attributes like performance, load, stress, security, usability."
-    },
-    {
-      "id": 110,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Statement Coverage'?",
-      "options": [
-        "Ensuring each executable statement runs at least once",
-        "Testing all branches",
-        "Testing all paths",
-        "Testing all conditions"
-      ],
-      "correct": 0,
-      "explanation": "Statement coverage metric ensures each line of code executed at least once in tests."
-    },
-    {
-      "id": 111,
-      "topic": "Agile & Scrum",
-      "difficulty": "easy",
-      "question": "What is 'Sprint Goal'?",
-      "options": [
-        "Objective that gives direction to Sprint",
-        "Sprint deliverable list",
-        "Team commitment",
-        "Product Owner expectation"
-      ],
-      "correct": 0,
-      "explanation": "Sprint Goal is the single objective for Sprint providing guidance and flexibility on work."
-    },
-    {
-      "id": 112,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is the maximum length of Sprint according to Scrum Guide?",
-      "options": ["1 month", "2 weeks", "6 weeks", "No limit"],
-      "correct": 0,
-      "explanation": "Sprint is time-boxed to maximum one month, shorter sprints (1-2 weeks) are common."
-    },
-    {
-      "id": 113,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is the 'Scrum Master' responsible for?",
-      "options": [
-        "Serving team by removing impediments and ensuring Scrum adoption",
-        "Managing team",
-        "Writing code",
-        "Product decisions"
-      ],
-      "correct": 0,
-      "explanation": "Scrum Master serves team by removing impediments, facilitating events, and coaching Scrum adoption."
-    },
-    {
-      "id": 114,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is 'Self-Organizing Team' in Scrum?",
-      "options": [
-        "Team decides how to do work best",
-        "Team works without Scrum Master",
-        "Team does all work alone",
-        "No management oversight"
-      ],
-      "correct": 0,
-      "explanation": "Self-organizing teams decide internally how best to accomplish their work."
-    },
-    {
-      "id": 115,
-      "topic": "Version Control & Git",
-      "difficulty": "easy",
-      "question": "What command shows commit history?",
-      "options": ["git log", "git history", "git show", "git commits"],
-      "correct": 0,
-      "explanation": "git log displays commit history in reverse chronological order."
-    },
-    {
-      "id": 116,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What is 'git remote' used for?",
-      "options": [
-        "Manage remote repository connections",
-        "View remote files",
-        "Delete remote",
-        "Compare with remote"
-      ],
-      "correct": 0,
-      "explanation": "git remote manages set of tracked remote repositories (add, remove, rename, list)."
-    },
-    {
-      "id": 117,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is 'git blame' used for?",
-      "options": [
-        "Show who changed each line and when",
-        "Assign blame for bugs",
-        "Track changes",
-        "Find commit author"
-      ],
-      "correct": 0,
-      "explanation": "git blame shows revision and author for each line of a file, useful to track changes."
-    },
-    {
-      "id": 118,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What does 'git clean -fd' do?",
-      "options": [
-        "Remove untracked directories and files",
-        "Clean branch history",
-        "Reset repository",
-        "Delete ignored files"
-      ],
-      "correct": 0,
-      "explanation": "git clean -fd removes untracked files (-f force) and directories (-d) from working tree."
-    },
-    {
-      "id": 119,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is 'git grep'?",
-      "options": [
-        "Search for patterns in tracked files",
-        "Search all files",
-        "Search commit messages",
-        "Search branch names"
-      ],
-      "correct": 0,
-      "explanation": "git grep searches tracked files for specified pattern/expression similar to grep but across repository."
-    },
-    {
-      "id": 120,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is 'Planning Poker'?",
-      "options": [
-        "Consensus-based estimation technique using cards",
-        "Team building game",
-        "Prioritization method",
-        "Sprint activity"
-      ],
-      "correct": 0,
-      "explanation": "Planning Poker uses numbered cards for team members to simultaneously estimate story points."
-    },
-    {
-      "id": 121,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is 'Delphi Technique'?",
-      "options": [
-        "Anonymous expert consensus estimation method",
-        "Scheduling method",
-        "Risk identification",
-        "Quality control"
-      ],
-      "correct": 0,
-      "explanation": "Delphi technique gathers expert opinions anonymously and iteratively to reach consensus estimate."
-    },
-    {
-      "id": 122,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What is 'Schedule Performance Index' (SPI)?",
-      "options": [
-        "EV/PV - measures schedule efficiency",
-        "EV/AC - cost efficiency",
-        "PV/EV - schedule progress",
-        "AC/EV - cost performance"
-      ],
-      "correct": 0,
-      "explanation": "SPI = Earned Value / Planned Value. >1 means ahead of schedule; <1 means behind schedule."
-    },
-    {
-      "id": 123,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What is 'Cost Performance Index' (CPI)?",
-      "options": [
-        "EV/AC - cost efficiency metric",
-        "EV/PV - schedule metric",
-        "AC/EV - cost variance",
-        "PV/AC - budget metric"
-      ],
-      "correct": 0,
-      "explanation": "CPI = Earned Value / Actual Cost. >1 means under budget; <1 means over budget."
-    },
-    {
-      "id": 124,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is 'Risk Acceptance' strategy?",
-      "options": [
-        "Acknowledge risk and budget for it if occurs",
-        "Eliminate risk completely",
-        "Transfer risk ownership",
-        "Avoid risk activity"
-      ],
-      "correct": 0,
-      "explanation": "Risk acceptance acknowledges risk and establishes contingency reserve to deal if it occurs."
-    },
-    {
-      "id": 125,
-      "topic": "Risk & Requirements",
-      "difficulty": "hard",
-      "question": "What is 'Risk Exploitation' strategy for positive risks?",
-      "options": [
-        "Take action to ensure opportunity occurs",
-        "Share opportunity with third party",
-        "Enhance probability/impact",
-        "Accept opportunity passively"
-      ],
-      "correct": 0,
-      "explanation": "Risk exploitation takes action to make positive risk (opportunity) definitely happen."
-    },
-    {
-      "id": 126,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Test Oracle'?",
-      "options": [
-        "Source for determining expected results",
-        "Testing framework",
-        "Automation tool",
-        "Test environment"
-      ],
-      "correct": 0,
-      "explanation": "Test oracle provides expected results to compare actual test outputs against."
-    },
-    {
-      "id": 127,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Ad-hoc Testing'?",
-      "options": [
-        "Unstructured testing without test cases",
-        "Random test execution",
-        "Scripted testing",
-        "Regression testing"
-      ],
-      "correct": 0,
-      "explanation": "Ad-hoc testing is informal, unplanned testing without formal test cases or procedures."
-    },
-    {
-      "id": 128,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Recovery Testing'?",
-      "options": [
-        "Test system recovery from failures",
-        "Test data recovery",
-        "Test backup",
-        "Test restart capability"
-      ],
-      "correct": 0,
-      "explanation": "Recovery testing verifies system can recover from failures and resume normal operations."
-    },
-    {
-      "id": 129,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Fuzz Testing'?",
-      "options": [
-        "Invalid/random data input to find crashes/vulnerabilities",
-        "Performance testing",
-        "Stress testing",
-        "Security audit"
-      ],
-      "correct": 0,
-      "explanation": "Fuzz testing feeds random, invalid, unexpected data to find crashes, memory leaks, security flaws."
-    },
-    {
-      "id": 130,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Static Application Security Testing' (SAST)?",
-      "options": [
-        "Analyze source code for vulnerabilities without execution",
-        "Runtime application testing",
-        "Penetration testing",
-        "Dynamic analysis"
-      ],
-      "correct": 0,
-      "explanation": "SAST analyzes source/compiled code for security vulnerabilities by examining code structure."
-    },
-    {
-      "id": 131,
-      "topic": "Agile & Scrum",
-      "difficulty": "easy",
-      "question": "What is 'Impediment' in Scrum?",
-      "options": [
-        "Anything blocking Development Team progress",
-        "Minor issue",
-        "Technical debt item",
-        "Bug in code"
-      ],
-      "correct": 0,
-      "explanation": "Impediment is anything hindering team's progress. Scrum Master removes impediments."
-    },
-    {
-      "id": 132,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is 'Timebox' in Scrum?",
-      "options": [
-        "Fixed time period for Scrum events",
-        "Sprint duration only",
-        "Deadline for tasks",
-        "Time tracking"
-      ],
-      "correct": 0,
-      "explanation": "Timebox sets fixed maximum duration for Scrum events; all events have timeboxes."
-    },
-    {
-      "id": 133,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is 'Scrum of Scrums'?",
-      "options": [
-        "Scaled Scrum meeting for multiple teams",
-        "Daily Scrum variant",
-        "Sprint Retrospective format",
-        "Team lead meeting"
-      ],
-      "correct": 0,
-      "explanation": "Scrum of Scrums coordinates multiple Scrum teams in large projects. Each team delegates rep."
-    },
-    {
-      "id": 134,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What is 'Git Flow' workflow?",
-      "options": [
-        "Branching model with master, develop, feature, release, hotfix branches",
-        "Single branch workflow",
-        "Linear history workflow",
-        "Trunk-based development"
-      ],
-      "correct": 0,
-      "explanation": "Git Flow defines strict branching model for managing releases, features, and hotfixes."
-    },
-    {
-      "id": 135,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is 'GitHub Flow'?",
-      "options": [
-        "Simpler workflow: master always deployable, feature branches via PRs",
-        "GitHub API",
-        "Git hosting service",
-        "Flow-based development"
-      ],
-      "correct": 0,
-      "explanation": "GitHub Flow: master is always deployable. Feature branches opened via pull request, reviewed, merged."
-    },
-    {
-      "id": 136,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Smoke vs Sanity Testing'?",
-      "options": [
-        "Smoke: broad shallow; Sanity: narrow deep after fixes",
-        "Same thing",
-        "Sanity: build verification; Smoke: narrow",
-        "Smoke for release; Sanity for development"
-      ],
-      "correct": 0,
-      "explanation": "Smoke: broad shallow test of critical functions. Sanity: narrow deep testing of specific functionality."
-    },
-    {
-      "id": 137,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Black-Box Testing' technique called 'Decision Table Testing'?",
-      "options": [
-        "Table of inputs/conditions vs expected outputs",
-        "Truth table testing",
-        "Boundary testing",
-        "State transition table"
-      ],
-      "correct": 0,
-      "explanation": "Decision table testing systematically tests combinations of inputs/conditions and expected outputs."
-    },
-    {
-      "id": 138,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'State Transition Testing'?",
-      "options": [
-        "Test transitions between system states",
-        "Test state variables",
-        "Test state changes only",
-        "Test state machine implementation"
-      ],
-      "correct": 0,
-      "explanation": "State transition testing exercises state transitions of system under test with test sequences."
-    },
-    {
-      "id": 139,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is 'Slack' or 'Float'?",
-      "options": [
-        "Amount of time task can delay without affecting project completion",
-        "Extra budget",
-        "Resource buffer",
-        "Schedule buffer"
-      ],
-      "correct": 0,
-      "explanation": "Float/slack is time an activity can be delayed without impacting project end date."
-    },
-    {
-      "id": 140,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "hard",
-      "question": "What is 'Program Evaluation and Review Technique' (PERT)?",
-      "options": [
-        "Time estimation using three-point estimates (O/P/M)",
-        "Critical path method variant",
-        "Gantt chart technique",
-        "Resource leveling"
-      ],
-      "correct": 0,
-      "explanation": "PERT uses three estimates (optimistic, pessimistic, most likely) to calculate expected activity duration."
-    },
-    {
-      "id": 141,
-      "topic": "Version Control & Git",
-      "difficulty": "hard",
-      "question": "What is 'git worktree'?",
-      "options": [
-        "Create multiple working trees from single repository",
-        "Track work progress",
-        "Manage work items",
-        "Multiple branch checkout"
-      ],
-      "correct": 0,
-      "explanation": "git worktree creates additional working directories linked to same repository for parallel work."
-    },
-    {
-      "id": 142,
-      "topic": "Version Control & Git",
-      "difficulty": "medium",
-      "question": "What is 'git archive'?",
-      "options": [
-        "Create archive of repository at specific revision",
-        "Backup repository",
-        "Compress repository",
-        "Export single file"
-      ],
-      "correct": 0,
-      "explanation": "git archive creates tar/zip archive of repository snapshots without .git metadata."
-    },
-    {
-      "id": 143,
-      "topic": "Agile & Scrum",
-      "difficulty": "hard",
-      "question": "What is 'Kanban' vs Scrum difference?",
-      "options": [
-        "Kanban: continuous flow; Scrum: timeboxed sprints",
-        "Scrum uses boards; Kanban doesn't",
-        "Kanban has roles; Scrum doesn't",
-        "Kanban iterative; Scrum continuous"
-      ],
-      "correct": 0,
-      "explanation": "Scrum uses fixed sprints. Kanban uses continuous flow with WIP limits, no timeboxes."
-    },
-    {
-      "id": 144,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is 'WIP Limit' in Kanban?",
-      "options": [
-        "Maximum items allowed in a column/workflow state",
-        "Work in progress count",
-        "Team capacity",
-        "Backlog limit"
-      ],
-      "correct": 0,
-      "explanation": "WIP limits constrain how many items can be in any workflow column to improve flow and identify bottlenecks."
-    },
-    {
-      "id": 145,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Monkey Testing'?",
-      "options": [
-        "Random input testing without specific test cases",
-        "Automated GUI testing",
-        "Performance testing",
-        "Load testing"
-      ],
-      "correct": 0,
-      "explanation": "Monkey testing provides random inputs to test system's random behavior or crash detection."
-    },
-    {
-      "id": 146,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Test Stub'?",
-      "options": [
-        "Dummy component simulating lower-level calls",
-        "Mock object",
-        "Test driver",
-        "Fake implementation"
-      ],
-      "correct": 0,
-      "explanation": "Test stub provides canned answers to calls from unit under test, simulating lower-level components."
-    },
-    {
-      "id": 147,
-      "topic": "Software Testing",
-      "difficulty": "hard",
-      "question": "What is 'Test Driver'?",
-      "options": [
-        "Component calling unit under test providing inputs",
-        "Test harness",
-        "Testing framework",
-        "Mock service"
-      ],
-      "correct": 0,
-      "explanation": "Test driver invokes unit under test, passes test data, and reports results."
-    },
-    {
-      "id": 148,
-      "topic": "PMBOK & Project Management",
-      "difficulty": "medium",
-      "question": "What is 'Dependency' in project management?",
-      "options": [
-        "Logical relationship between project activities",
-        "Task prerequisite",
-        "Resource constraint",
-        "Schedule constraint"
-      ],
-      "correct": 0,
-      "explanation": "Dependency is logical relationship where one activity cannot start/finish until another does."
-    },
-    {
-      "id": 149,
-      "topic": "Risk & Requirements",
-      "difficulty": "medium",
-      "question": "What is 'Risk Mitigation' vs 'Risk Transference'?",
-      "options": [
-        "Mitigation reduces probability/impact; Transference shifts to 3rd party",
-        "Mitigation eliminates; Transference reduces",
-        "Mitigation for threats; Transference for opportunities",
-        "They're same"
-      ],
-      "correct": 0,
-      "explanation": "Mitigation proactive reduction of risk. Transference shifts risk burden (insurance, warranties)."
-    },
-    {
-      "id": 150,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Happy Path' testing?",
-      "options": [
-        "Test main flow with valid inputs, no errors",
-        "Test error conditions",
-        "Test edge cases",
-        "Test performance"
-      ],
-      "correct": 0,
-      "explanation": "Happy path tests primary success scenario using valid inputs with no exceptions/errors."
-    },
-    {
-      "id": 151,
-      "topic": "Software Testing",
-      "difficulty": "medium",
-      "question": "What is 'Sad Path' testing?",
-      "options": [
-        "Test error handling and negative scenarios",
-        "Test happy cases",
-        "Test unusual conditions",
-        "Test only failures"
-      ],
-      "correct": 0,
-      "explanation": "Sad path tests negative scenarios, error handling, exceptions, and failure conditions."
-    },
-    {
-      "id": 152,
-      "topic": "Version Control & Git",
-      "difficulty": "easy",
-      "question": "What command shows current branch?",
-      "options": ["git branch", "git status", "git branch -a", "git info"],
       "correct": 1,
-      "explanation": "git status displays current branch among other repository status information."
+      "explanation": "The core thesis behind Regression Testing is that complex software is heavily tangled. A CSS fix could theoretically overlap a hidden div that blocks an API button, requiring sweeping regression validation."
     },
     {
-      "id": 153,
-      "topic": "Agile & Scrum",
-      "difficulty": "medium",
-      "question": "What is a 'Spike' in Agile?",
+      "topic": "PMBOK & Project Management",
+      "difficulty": "easy",
+      "question": "What are the three constraints in the traditional Project Management Iron Triangle?",
       "options": [
-        "Time-boxed research/exploration story to reduce uncertainty",
-        "Technical debt story",
-        "Bug fix story",
-        "Refactoring task"
+        "Scope, Time, and Quality",
+        "Cost, Risk, and Communication",
+        "Time, Cost, and Scope",
+        "Resources, Quality, and Stakeholders"
       ],
-      "correct": 0,
-      "explanation": "Spike is time-boxed research or exploration task to answer questions or investigate solutions."
+      "correct": 2,
+      "explanation": "The Iron Triangle (or Triple Constraint) dictates that you cannot change the Time, Cost, or Scope of a project without affecting at least one of the other two.",
+      "id": 26
     },
     {
-      "id": 154,
       "topic": "PMBOK & Project Management",
       "difficulty": "medium",
-      "question": "What is 'Change Request'?",
+      "question": "Which PMBOK process group is responsible for officially authorizing the start of a new project?",
       "options": [
-        "Formal proposal to modify project documents/baseline",
-        "Bug fix request",
-        "New feature request",
-        "Client complaint"
+        "Planning",
+        "Executing",
+        "Initiating",
+        "Monitoring and Controlling"
       ],
-      "correct": 0,
-      "explanation": "Change request is formal proposal to modify any project document, deliverable, or baseline."
+      "correct": 2,
+      "explanation": "The Initiating process group involves developing the Project Charter and identifying stakeholders, which officially authorizes the project.",
+      "id": 27
     },
     {
-      "id": 155,
-      "topic": "Risk & Requirements",
-      "difficulty": "hard",
-      "question": "What is 'Risk Heat Map'?",
+      "topic": "PMBOK & Project Management",
+      "difficulty": "medium",
+      "question": "What is the primary output of the 'Create WBS' process?",
       "options": [
-        "Visual matrix showing probability vs impact (color-coded)",
-        "Risk probability chart",
-        "Risk impact graph",
-        "Risk category chart"
+        "The Project Schedule",
+        "The Scope Baseline",
+        "The Resource Breakdown Structure",
+        "The Gantt Chart"
+      ],
+      "correct": 1,
+      "explanation": "The Scope Baseline consists of the Project Scope Statement, the WBS, and the WBS Dictionary.",
+      "id": 28
+    },
+    {
+      "topic": "PMBOK & Project Management",
+      "difficulty": "easy",
+      "question": "Who is primarily responsible for ensuring that the project meets its stated objectives while balancing the triple constraint?",
+      "options": [
+        "The Project Sponsor",
+        "The Project Manager",
+        "The Technical Lead",
+        "The Client"
+      ],
+      "correct": 1,
+      "explanation": "The Project Manager is assigned by the performing organization to lead the team that is responsible for achieving the project objectives.",
+      "id": 29
+    },
+    {
+      "topic": "PMBOK & Project Management",
+      "difficulty": "medium",
+      "question": "Which document formally authorizes the existence of a project and gives the Project Manager authority to apply organizational resources?",
+      "options": [
+        "Project Scope Statement",
+        "Project Management Plan",
+        "Project Charter",
+        "Business Case"
+      ],
+      "correct": 2,
+      "explanation": "The Project Charter is the document issued by the project initiator or sponsor that formally authorizes the existence of a project.",
+      "id": 30
+    },
+    {
+      "topic": "Agile & Scrum",
+      "difficulty": "easy",
+      "question": "According to the Agile Manifesto, what is valued more than 'comprehensive documentation'?",
+      "options": [
+        "Contract Negotiation",
+        "Working Software",
+        "Processes and Tools",
+        "Following a Plan"
+      ],
+      "correct": 1,
+      "explanation": "The Agile Manifesto states: 'Working software over comprehensive documentation'.",
+      "id": 31
+    },
+    {
+      "topic": "Agile & Scrum",
+      "difficulty": "easy",
+      "question": "What are the three core roles in the Scrum framework?",
+      "options": [
+        "Project Manager, Developer, Tester",
+        "Product Owner, Scrum Master, Developers",
+        "Scrum Master, Stakeholder, Team Lead",
+        "Business Analyst, Product Owner, Program Manager"
+      ],
+      "correct": 1,
+      "explanation": "Scrum defines only three roles: the Product Owner, the Scrum Master, and the Developers (the Team).",
+      "id": 32
+    },
+    {
+      "topic": "Agile & Scrum",
+      "difficulty": "medium",
+      "question": "What is the artifact that contains all features, functions, and fixes needed for the product?",
+      "options": [
+        "Sprint Backlog",
+        "Product Backlog",
+        "Release Plan",
+        "Sprint Goal"
+      ],
+      "correct": 1,
+      "explanation": "The Product Backlog is the single source of truth for all intended changes to the product, maintained by the Product Owner.",
+      "id": 33
+    },
+    {
+      "topic": "Agile & Scrum",
+      "difficulty": "easy",
+      "question": "What is the maximum recommended duration for a Daily Scrum meeting?",
+      "options": [
+        "15 minutes",
+        "30 minutes",
+        "45 minutes",
+        "1 hour"
       ],
       "correct": 0,
-      "explanation": "Heat map visualizes risks on probability-impact matrix, color-coded by severity level."
+      "explanation": "The Daily Scrum is time-boxed to a maximum of 15 minutes to keep it concise and focused.",
+      "id": 34
+    },
+    {
+      "topic": "Agile & Scrum",
+      "difficulty": "medium",
+      "question": "During which Scrum ceremony does the team demonstrate the Working Increment to stakeholders?",
+      "options": [
+        "Sprint Retrospective",
+        "Daily Scrum",
+        "Sprint Review",
+        "Sprint Planning"
+      ],
+      "correct": 2,
+      "explanation": "The Sprint Review is held at the end of the Sprint to inspect the Increment and adapt the Product Backlog if needed.",
+      "id": 35
+    },
+    {
+      "topic": "Version Control & Git",
+      "difficulty": "easy",
+      "question": "What does the 'git clone' command do?",
+      "options": [
+        "Synchronizes local changes with the remote server.",
+        "Downloads a complete copy of an existing remote repository to your local machine.",
+        "Creates a new, empty git repository in the current directory.",
+        "Branches the current repository into a secondary project."
+      ],
+      "correct": 1,
+      "explanation": "git clone is used to target an existing repository and create a full local copy of it on your machine.",
+      "id": 36
+    },
+    {
+      "topic": "Version Control & Git",
+      "difficulty": "easy",
+      "question": "Which of the following commands stages all modified and deleted files for the next commit?",
+      "options": [
+        "git stage *",
+        "git add .",
+        "git commit -a",
+        "git push --all"
+      ],
+      "correct": 1,
+      "explanation": "git add . stages all changes (new, modified, deleted) in the current directory and its subdirectories.",
+      "id": 37
+    },
+    {
+      "topic": "Version Control & Git",
+      "difficulty": "medium",
+      "question": "What is the primary difference between git pull and git fetch?",
+      "options": [
+        "git pull only downloads metadata; git fetch downloads actual files.",
+        "git pull creates branches; git fetch deletes them.",
+        "git fetch downloads changes without merging; git pull downloads changes and immediately merges them.",
+        "There is no difference; they are aliases for the same action."
+      ],
+      "correct": 2,
+      "explanation": "Fetch safely updates your remote tracking branches. Pull actually executes a fetch AND an immediate merge into your active branch.",
+      "id": 38
+    },
+    {
+      "topic": "Version Control & Git",
+      "difficulty": "hard",
+      "question": "What happens if you run 'git commit --amend' while you have new files staged in the index?",
+      "options": [
+        "The new files are discarded and the previous commit message is changed.",
+        "The staged files are combined with the previous commit, creating a single updated commit.",
+        "Git rejects the command because you cannot amend when the index is dirty.",
+        "The previous commit is deleted and a new commit is created containing only the staged files."
+      ],
+      "correct": 1,
+      "explanation": "git commit --amend modifies the most recent commit. If files are staged, they are rolled into that last commit instead of creating a separate new one.",
+      "id": 39
+    },
+    {
+      "topic": "Version Control & Git",
+      "difficulty": "medium",
+      "question": "In Git, what is the 'HEAD' pointer?",
+      "options": [
+        "It points to the oldest commit in the repository's history.",
+        "It is the branch representing the production server codebase.",
+        "It is a pointer to the current commit or branch your working directory is currently based on.",
+        "It signifies the latest commit pushed to the origin repository."
+      ],
+      "correct": 2,
+      "explanation": "HEAD is simply a reference that tells Git what branch or specific commit you currently have checked out in your working tree.",
+      "id": 40
+    },
+    {
+      "topic": "Risk & Requirements",
+      "difficulty": "medium",
+      "question": "What characterizes a 'Functional Requirement'?",
+      "options": [
+        "It defines constraints on the system such as performance or security.",
+        "It describes a specific behavior or task the system must accomplish.",
+        "It mandates the programming languages used by the developers.",
+        "It outlines the budget for the software development cycle."
+      ],
+      "correct": 1,
+      "explanation": "Functional requirements define 'what' the system should do (e.g., 'The system allows users to add items to a cart').",
+      "id": 41
+    },
+    {
+      "topic": "Risk & Requirements",
+      "difficulty": "easy",
+      "question": "In the MoSCoW prioritization technique, what does the 'M' stand for?",
+      "options": [
+        "Maybe Have",
+        "Must Have",
+        "Maximum Have",
+        "Moderate Have"
+      ],
+      "correct": 1,
+      "explanation": "MoSCoW stands for Must have, Should have, Could have, and Won't have.",
+      "id": 42
+    },
+    {
+      "topic": "Risk & Requirements",
+      "difficulty": "medium",
+      "question": "If a project team identifies a high-impact risk and decides to purchase insurance to cover potential losses, which risk response strategy are they using?",
+      "options": [
+        "Avoidance",
+        "Mitigation",
+        "Transference",
+        "Acceptance"
+      ],
+      "correct": 2,
+      "explanation": "Risk Transference involves shifting the financial impact of a risk to a third party, such as buying insurance.",
+      "id": 43
+    },
+    {
+      "topic": "Risk & Requirements",
+      "difficulty": "medium",
+      "question": "Which requirement elicitation technique involves watching a user perform their daily tasks without interfering?",
+      "options": [
+        "Focus Groups",
+        "Questionnaires",
+        "Observation / Job Shadowing",
+        "Prototyping"
+      ],
+      "correct": 2,
+      "explanation": "Observation (sometimes called shadowing) involves quietly observing a user in their natural work environment to document their exact workflows.",
+      "id": 44
+    },
+    {
+      "topic": "Risk & Requirements",
+      "difficulty": "hard",
+      "question": "A risk is assessed by plotting its 'Probability' against its 'Impact'. What is the resulting matrix commonly called?",
+      "options": [
+        "The Risk Breakdown Structure (RBS)",
+        "The Risk Register",
+        "The Probability/Impact Matrix (PI Matrix)",
+        "The Ishikawa Diagram"
+      ],
+      "correct": 2,
+      "explanation": "A Probability and Impact Matrix visually maps risks to determine their overall severity rating (Low, Medium, High).",
+      "id": 45
+    },
+    {
+      "topic": "Software Testing",
+      "difficulty": "easy",
+      "question": "Which phase of testing verifies that individual components or modules of code function correctly in isolation?",
+      "options": [
+        "System Testing",
+        "Unit Testing",
+        "Acceptance Testing",
+        "Integration Testing"
+      ],
+      "correct": 1,
+      "explanation": "Unit testing tests individual functions, methods, or classes directly, usually using mock objects to isolate the code.",
+      "id": 46
+    },
+    {
+      "topic": "Software Testing",
+      "difficulty": "medium",
+      "question": "What is the primary goal of Acceptance Testing (UAT)?",
+      "options": [
+        "To find logical errors in the backend code.",
+        "To verify that front-end API requests connect strictly to the database.",
+        "To confirm the system satisfies the business requirements and is acceptable to the end user.",
+        "To benchmark the CPU performance under high user load."
+      ],
+      "correct": 2,
+      "explanation": "User Acceptance Testing (UAT) is the final phase, ensuring the software solves the actual business problem for the client before release.",
+      "id": 47
+    },
+    {
+      "topic": "Software Testing",
+      "difficulty": "medium",
+      "question": "In testing terminology, what is 'Black-box testing'?",
+      "options": [
+        "Testing the internal structure, code, and logic of an application.",
+        "Testing the application without knowing its internal code structure, focusing only on outputs based on inputs.",
+        "Testing systems that have been blacklisted by antivirus scanners.",
+        "A testing technique purely focused on hardware failures."
+      ],
+      "correct": 1,
+      "explanation": "Black-box testing is purely functional testing from the user's perspective, without looking at or knowing the internal code execution path.",
+      "id": 48
+    },
+    {
+      "topic": "Software Testing",
+      "difficulty": "hard",
+      "question": "If an input field only accepts number values from 1 to 100, which of the following represents an Equivalence Partitioning test strategy?",
+      "options": [
+        "Testing 0, 1, 100, and 101.",
+        "Testing every single integer from 1 to 100.",
+        "Testing exactly three values: -10, 50, and 120.",
+        "Testing the application on Chrome, Firefox, and Safari."
+      ],
+      "correct": 2,
+      "explanation": "Equivalence Partitioning divides inputs into valid and invalid classes. -10 (invalid low), 50 (valid), and 120 (invalid high) covers all partitions efficiently without testing every number.",
+      "id": 49
+    },
+    {
+      "topic": "Software Testing",
+      "difficulty": "medium",
+      "question": "What is Regression Testing?",
+      "options": [
+        "Testing legacy systems before they are decommissioned.",
+        "Re-running previously passed tests after a code change to ensure existing functionality did not break.",
+        "Testing the application manually to find interface bugs.",
+        "Testing to see how the application behaves when network connectivity regressions occur."
+      ],
+      "correct": 1,
+      "explanation": "Whenever new code is added, Regression Testing ensures the baseline system hasn't 'regressed' or broken due to the addition.",
+      "id": 50
     }
   ]
 }

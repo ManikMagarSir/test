@@ -742,6 +742,83 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Modal Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0) scale(1);
+            border-color: #6366f1;
+        }
+
+        .modal-header {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .modal-header.correct {
+            color: #4ade80;
+        }
+
+        .modal-header.incorrect {
+            color: #f87171;
+        }
+
+        .modal-explanation {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .modal-timer {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+            height: 20px;
+        }
+
         /* Typography */
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
@@ -855,21 +932,7 @@
 
                         <!-- Action Buttons -->
                         <div class="action-buttons">
-                            <button class="btn btn-primary" id="nextBtn" disabled>Next Question</button>
-                            <button class="btn btn-secondary" id="skipBtn">Skip</button>
-                        </div>
-
-                        <!-- Explanation -->
-                        <div class="explanation" id="explanation">
-                            <div class="explanation-title">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                                </svg>
-                                Explanation
-                            </div>
-                            <p id="explanationText"></p>
+                            <button class="btn btn-secondary" id="skipBtn" style="width: 100%;">Skip Question</button>
                         </div>
                     </div>
 
@@ -885,433 +948,24 @@
         </div>
     </div>
 
+    <!-- Explanation Modal -->
+    <div class="modal-overlay" id="explanationModal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalResultHeader">
+                <!-- Result icon/text -->
+            </div>
+            <div id="modalCorrectAnswer" style="display: none; background: rgba(74, 222, 128, 0.1); border-left: 4px solid #4ade80; padding: 1rem; margin-bottom: 1.5rem; text-align: left; border-radius: 4px;">
+                <span style="color: #4ade80; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">Correct Answer:</span>
+                <div id="modalCorrectAnswerText" style="color: white; margin-top: 0.5rem; font-size: 1.05rem;"></div>
+            </div>
+            <div class="modal-explanation" id="modalExplanationText"></div>
+            <div class="modal-timer" id="modalTimerText">Please wait 2s to proceed...</div>
+            <button class="btn btn-primary" id="modalNextBtn" style="width: 100%;" disabled>Next Question</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Question data - embedded for easy loading
-        const questionData = {
-            "title": "Software Engineering Quiz - Complete Question Bank",
-            "topics": [
-                "PMBOK & Project Management",
-                "Agile & Scrum",
-                "Version Control & Git",
-                "Risk & Requirements",
-                "Software Testing"
-            ],
-            "questions": [
-                {
-                    "id": 1,
-                    "topic": "PMBOK & Project Management",
-                    "difficulty": "easy",
-                    "question": "How many knowledge areas are there in PMBOK?",
-                    "options": ["9", "10", "12", "8"],
-                    "correct": 1,
-                    "explanation": "PMBOK Guide 7th edition defines 12 principles and 8 performance domains, but traditionally PMBOK had 10 knowledge areas. The latest edition focuses on principles rather than knowledge areas."
-                },
-                {
-                    "id": 2,
-                    "topic": "PMBOK & Project Management",
-                    "difficulty": "medium",
-                    "question": "What are the five process groups in project management according to PMBOK?",
-                    "options": [
-                        "Initiating, Planning, Executing, Monitoring, Closing",
-                        "Starting, Organizing, Leading, Controlling, Ending",
-                        "Define, Design, Develop, Deploy, Deliver",
-                        "Conceive, Develop, Implement, Operate, Terminate"
-                    ],
-                    "correct": 0,
-                    "explanation": "The 5 Process Groups are: Initiating Process Group, Planning Process Group, Executing Process Group, Monitoring and Controlling Process Group, and Closing Process Group."
-                },
-                {
-                    "id": 3,
-                    "topic": "PMBOK & Project Management",
-                    "difficulty": "medium",
-                    "question": "What does the acronym SMART stand for in project management?",
-                    "options": [
-                        "Specific, Measurable, Achievable, Relevant, Time-bound",
-                        "Simple, Manageable, Actionable, Realistic, Trackable",
-                        "Strategic, Measurable, Aligned, Results-driven, Timely",
-                        "Specific, Measurable, Accountable, Relevant, Traceable"
-                    ],
-                    "correct": 0,
-                    "explanation": "SMART criteria ensure objectives are Specific, Measurable, Achievable/Assignable, Relevant/Realistic, and Time-bound."
-                },
-                {
-                    "id": 4,
-                    "topic": "PMBOK & Project Management",
-                    "difficulty": "hard",
-                    "question": "What is the difference between 'Baseline' and 'Target' in project management?",
-                    "options": [
-                        "Baseline is the original plan; Target is what you aim to achieve",
-                        "Baseline is for cost; Target is for schedule",
-                        "They are interchangeable terms",
-                        "Baseline is fixed; Target can change"
-                    ],
-                    "correct": 0,
-                    "explanation": "Baseline is the approved version of a work product that can be changed only through formal change control. Target is what you aim to achieve."
-                },
-                {
-                    "id": 5,
-                    "topic": "Agile & Scrum",
-                    "difficulty": "easy",
-                    "question": "What are the three roles in a Scrum team?",
-                    "options": [
-                        "Product Owner, Scrum Master, Development Team",
-                        "Project Manager, Business Analyst, Developers",
-                        "Stakeholder, Client, Team Lead",
-                        "Manager, Developer, Tester"
-                    ],
-                    "correct": 0,
-                    "explanation": "Scrum has three defined roles: Product Owner (represents stakeholders), Scrum Master (facilitates process), and Development Team (builds the product)."
-                },
-                {
-                    "id": 6,
-                    "topic": "Agile & Scrum",
-                    "difficulty": "easy",
-                    "question": "What is a Sprint in Scrum?",
-                    "options": [
-                        "A time-boxed iteration of 1-4 weeks",
-                        "A daily meeting",
-                        "The final delivery phase",
-                        "A planning document"
-                    ],
-                    "correct": 0,
-                    "explanation": "A Sprint is a time-boxed iteration (typically 1-4 weeks) during which a potentially releasable product increment is created."
-                },
-                {
-                    "id": 7,
-                    "topic": "Agile & Scrum",
-                    "difficulty": "medium",
-                    "question": "What are the five Scrum ceremonies?",
-                    "options": [
-                        "Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Backlog Refinement",
-                        "Planning, Development, Testing, Review, Deployment",
-                        "Kickoff, Standup, Demo, Retrospective, Grooming",
-                        "Sprint Planning, Daily Standup, Sprint Demo, Sprint Retrospective, Grooming"
-                    ],
-                    "correct": 0,
-                    "explanation": "The 5 Scrum ceremonies are: Sprint Planning, Daily Scrum (Daily Standup), Sprint Review, Sprint Retrospective, and Product Backlog Refinement."
-                },
-                {
-                    "id": 8,
-                    "topic": "Agile & Scrum",
-                    "difficulty": "medium",
-                    "question": "What is the purpose of the Sprint Retrospective?",
-                    "options": [
-                        "To reflect on the process and identify improvements for next sprint",
-                        "To showcase completed work to stakeholders",
-                        "To plan the next sprint's work",
-                        "To assign tasks to team members"
-                    ],
-                    "correct": 0,
-                    "explanation": "The Sprint Retrospective is held at the end of each sprint for the Scrum Team to inspect itself and create a plan for improvements."
-                },
-                {
-                    "id": 9,
-                    "topic": "Agile & Scrum",
-                    "difficulty": "hard",
-                    "question": "What is the key difference between Agile and Scrum?",
-                    "options": [
-                        "Agile is a mindset/philosophy; Scrum is a framework implementing Agile",
-                        "Agile is for software; Scrum is for hardware",
-                        "Scrum is more flexible than Agile",
-                        "They are the same thing"
-                    ],
-                    "correct": 0,
-                    "explanation": "Agile is a set of values and principles (mindset). Scrum is a specific framework with prescribed roles, events, and artifacts that implements Agile principles."
-                },
-                {
-                    "id": 10,
-                    "topic": "Version Control & Git",
-                    "difficulty": "easy",
-                    "question": "What command initializes a new Git repository?",
-                    "options": ["git init", "git new", "git create", "git start"],
-                    "correct": 0,
-                    "explanation": "git init creates a new empty Git repository in the current directory."
-                },
-                {
-                    "id": 11,
-                    "topic": "Version Control & Git",
-                    "difficulty": "easy",
-                    "question": "What does the git commit command do?",
-                    "options": [
-                        "Saves changes to the local repository",
-                        "Uploads changes to remote server",
-                        "Shows current changes",
-                        "Creates a new branch"
-                    ],
-                    "correct": 0,
-                    "explanation": "git commit creates a snapshot of the current state of the repository and saves it to the local repository's history."
-                },
-                {
-                    "id": 12,
-                    "topic": "Version Control & Git",
-                    "difficulty": "medium",
-                    "question": "What is the difference between git merge and git rebase?",
-                    "options": [
-                        "Merge creates a new commit; Rebase rewrites commit history",
-                        "Rebase is faster; Merge is safer",
-                        "Merge is for branches; Rebase is for commits",
-                        "They do the same thing"
-                    ],
-                    "correct": 0,
-                    "explanation": "git merge combines branches with a merge commit, preserving history. git rebase moves the entire branch to begin on the tip of another branch, creating a linear history by rewriting commits."
-                },
-                {
-                    "id": 13,
-                    "topic": "Version Control & Git",
-                    "difficulty": "medium",
-                    "question": "What does a 'detached HEAD' state mean in Git?",
-                    "options": [
-                        "HEAD points directly to a commit, not a branch",
-                        "The repository is corrupted",
-                        "You have uncommitted changes",
-                        "You're on a remote branch"
-                    ],
-                    "correct": 0,
-                    "explanation": "A detached HEAD occurs when HEAD points to a specific commit rather than a branch name, typically after checking out an old commit or a tag."
-                },
-                {
-                    "id": 14,
-                    "topic": "Version Control & Git",
-                    "difficulty": "hard",
-                    "question": "What is the purpose of 'git cherry-pick'?",
-                    "options": [
-                        "Apply specific commits from one branch to another",
-                        "Pick the best commit message",
-                        "Select which files to commit",
-                        "Choose which branches to merge"
-                    ],
-                    "correct": 0,
-                    "explanation": "git cherry-pick allows you to apply the changes introduced by one or more commits from another branch onto your current branch."
-                },
-                {
-                    "id": 15,
-                    "topic": "Risk & Requirements",
-                    "difficulty": "easy",
-                    "question": "What are the two main types of requirements in software engineering?",
-                    "options": [
-                        "Functional and Non-functional",
-                        "Technical and Business",
-                        "User and System",
-                        "High-level and Low-level"
-                    ],
-                    "correct": 0,
-                    "explanation": "Functional requirements describe what the system should do. Non-functional requirements describe how the system should perform (performance, security, usability, etc.)."
-                },
-                {
-                    "id": 16,
-                    "topic": "Risk & Requirements",
-                    "difficulty": "medium",
-                    "question": "What is RAID in project management?",
-                    "options": [
-                        "Risks, Assumptions, Issues, Dependencies",
-                        "Requirements, Actions, Issues, Decisions",
-                        "Results, Actions, Inputs, Deliverables",
-                        "Risks, Actions, Inputs, Decisions"
-                    ],
-                    "correct": 0,
-                    "explanation": "RAID is a project management acronym: Risks, Assumptions, Issues, and Dependencies - a log to track these critical project elements."
-                },
-                {
-                    "id": 17,
-                    "topic": "Risk & Requirements",
-                    "difficulty": "medium",
-                    "question": "What is risk mitigation?",
-                    "options": [
-                        "Taking steps to reduce probability and/or impact of a risk",
-                        "Eliminating all risks completely",
-                        "Accepting the risk and dealing with it if it occurs",
-                        "Transferring risk to another party"
-                    ],
-                    "correct": 0,
-                    "explanation": "Risk mitigation involves proactive actions to reduce either the probability of a risk occurring or its impact if it does occur."
-                },
-                {
-                    "id": 18,
-                    "topic": "Risk & Requirements",
-                    "difficulty": "hard",
-                    "question": "What is the difference between 'Risk Avoidance' and 'Risk Transference'?",
-                    "options": [
-                        "Avoidance eliminates the risk; Transference shifts it to a third party",
-                        "Avoidance is cheaper; Transference is more expensive",
-                        "Avoidance is for threats; Transference is for opportunities",
-                        "They are the same strategy"
-                    ],
-                    "correct": 0,
-                    "explanation": "Risk avoidance changes plans to eliminate the risk entirely. Risk transference shifts the risk's impact to a third party (e.g., insurance, outsourcing)."
-                },
-                {
-                    "id": 19,
-                    "topic": "Software Testing",
-                    "difficulty": "easy",
-                    "question": "What is the difference between verification and validation?",
-                    "options": [
-                        "Verification: Are we building the product right? Validation: Are we building the right product?",
-                        "Verification: Are we building the right product? Validation: Are we building the product right?",
-                        "Verification is manual; Validation is automated",
-                        "They are the same"
-                    ],
-                    "correct": 0,
-                    "explanation": "Verification ensures the product meets specifications (building right). Validation ensures the product meets user needs (building right product)."
-                },
-                {
-                    "id": 20,
-                    "topic": "Software Testing",
-                    "difficulty": "medium",
-                    "question": "What are the different levels of software testing?",
-                    "options": [
-                        "Unit, Integration, System, Acceptance",
-                        "White-box, Black-box, Gray-box",
-                        "Static, Dynamic",
-                        "Functional, Non-functional"
-                    ],
-                    "correct": 0,
-                    "explanation": "The four main testing levels: Unit testing (individual components), Integration testing (component interactions), System testing (complete system), Acceptance testing (user acceptance)."
-                },
-                {
-                    "id": 21,
-                    "topic": "Software Testing",
-                    "difficulty": "medium",
-                    "question": "What is regression testing?",
-                    "options": [
-                        "Testing to ensure new changes don't break existing functionality",
-                        "Testing the software after it has been modified",
-                        "Testing for performance issues",
-                        "Testing by developers themselves"
-                    ],
-                    "correct": 0,
-                    "explanation": "Regression testing verifies that recent code changes haven't broken existing functionality. It's typically automated and run frequently."
-                },
-                {
-                    "id": 22,
-                    "topic": "Software Testing",
-                    "difficulty": "hard",
-                    "question": "What is the difference between black-box and white-box testing?",
-                    "options": [
-                        "Black-box tests functionality without code knowledge; White-box tests internal structure with code knowledge",
-                        "Black-box is manual; White-box is automated",
-                        "Black-box is for unit testing; White-box for system testing",
-                        "There is no difference"
-                    ],
-                    "correct": 0,
-                    "explanation": "Black-box testing tests functionality without internal code knowledge. White-box testing (clear-box) tests internal code structure, logic, and paths."
-                },
-                {
-                    "id": 23,
-                    "topic": "Version Control & Git",
-                    "difficulty": "medium",
-                    "question": "What does the git fetch command do compared to git pull?",
-                    "options": [
-                        "fetch downloads remote changes but doesn't merge; pull fetches and merges",
-                        "fetch is faster than pull",
-                        "pull is for branches; fetch is for commits",
-                        "They are identical"
-                    ],
-                    "correct": 0,
-                    "explanation": "git fetch downloads remote changes without merging them. git pull = git fetch + git merge, automatically merging fetched changes into the current branch."
-                },
-                {
-                    "id": 24,
-                    "topic": "Agile & Scrum",
-                    "difficulty": "medium",
-                    "question": "What is ' Velocity ' in Scrum?",
-                    "options": [
-                        "The amount of work a team completes in a sprint (measured in story points)",
-                        "The speed at which code is written",
-                        "How fast the product owner responds",
-                        "The number of sprints completed"
-                    ],
-                    "correct": 0,
-                    "explanation": "Velocity measures the amount of work a team completes in a sprint, typically measured in story points or ideal days. It helps with future sprint planning."
-                },
-                {
-                    "id": 25,
-                    "topic": "PMBOK & Project Management",
-                    "difficulty": "hard",
-                    "question": "What is the purpose of a 'Gantt Chart' in project management?",
-                    "options": [
-                        "Visualize project schedule and task dependencies",
-                        "Track project budget",
-                        "Manage project risks",
-                        "Document project requirements"
-                    ],
-                    "correct": 0,
-                    "explanation": "A Gantt chart is a bar chart that shows project tasks along a timeline, illustrating start/end dates and dependencies between activities."
-                },
-                {
-                    "id": 26,
-                    "topic": "Risk & Requirements",
-                    "difficulty": "medium",
-                    "question": "What is MoSCoW prioritization?",
-                    "options": [
-                        "Must have, Should have, Could have, Won't have",
-                        "Most critical, Somewhat critical, Could wait, Not needed",
-                        "Major, Optional, Small, Cancelled",
-                        "Minimum, Standard, Comprehensive, Optional, Wanted"
-                    ],
-                    "correct": 0,
-                    "explanation": "MoSCoW is a prioritization technique: Must have, Should have, Could have, Won't have (this time)."
-                },
-                {
-                    "id": 27,
-                    "topic": "Agile & Scrum",
-                    "difficulty": "hard",
-                    "question": "What is the purpose of 'Definition of Done' (DoD) in Scrum?",
-                    "options": [
-                        "A shared understanding of when work is complete and meets quality standards",
-                        "The deadline for completing a task",
-                        "The criteria for accepting a pull request",
-                        "The sprint length"
-                    ],
-                    "correct": 0,
-                    "explanation": "Definition of Done is a clear set of criteria that must be met before a product increment can be considered complete and potentially shippable."
-                },
-                {
-                    "id": 28,
-                    "topic": "Software Testing",
-                    "difficulty": "medium",
-                    "question": "What is smoke testing?",
-                    "options": [
-                        "Shallow testing to verify basic functionality after a build",
-                        "Testing performance under load",
-                        "Testing security vulnerabilities",
-                        "Exhaustive testing of all features"
-                    ],
-                    "correct": 0,
-                    "explanation": "Smoke testing (or sanity testing) is a quick set of tests to verify that the most crucial functions work, ensuring the build is testable."
-                },
-                {
-                    "id": 29,
-                    "topic": "Version Control & Git",
-                    "difficulty": "hard",
-                    "question": "What is the purpose of 'git bisect'?",
-                    "options": [
-                        "Automatically find the commit that introduced a bug using binary search",
-                        "Bisect files for changes",
-                        "Split a commit into two",
-                        "Merge two branches"
-                    ],
-                    "correct": 0,
-                    "explanation": "git bisect uses binary search to find which commit introduced a bug by marking commits as good or bad until the problematic commit is identified."
-                },
-                {
-                    "id": 30,
-                    "topic": "Risk & Requirements",
-                    "difficulty": "hard",
-                    "question": "What is the difference between 'Risk Appetite' and 'Risk Tolerance'?",
-                    "options": [
-                        "Appetite is the amount of risk willing to accept; Tolerance is the acceptable deviation from appetite",
-                        "They mean the same thing",
-                        "Appetite is for threats; Tolerance is for opportunities",
-                        "Tolerance is set by management; Appetite by team"
-                    ],
-                    "correct": 0,
-                    "explanation": "Risk appetite is the amount of risk an organization is willing to accept. Risk tolerance is the acceptable deviation from risk appetite for specific activities."
-                }
-            ]
-        };
-    </script>
     <script src="app.js"></script>
 </body>
 </html>

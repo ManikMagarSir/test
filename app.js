@@ -25,14 +25,20 @@ const elements = {
     questionTopic: document.getElementById('questionTopic'),
     questionDifficulty: document.getElementById('questionDifficulty'),
     optionsContainer: document.getElementById('optionsContainer'),
-    explanation: document.getElementById('explanation'),
-    explanationText: document.getElementById('explanationText'),
     currentQuestionNum: document.getElementById('currentQuestionNum'),
     totalQuestionCount: document.getElementById('totalQuestionCount'),
     progressBar: document.getElementById('progressBar'),
     progressPercent: document.getElementById('progressPercent'),
-    nextBtn: document.getElementById('nextBtn'),
     skipBtn: document.getElementById('skipBtn'),
+    
+    // New Modal Elements
+    explanationModal: document.getElementById('explanationModal'),
+    modalResultHeader: document.getElementById('modalResultHeader'),
+    modalExplanationText: document.getElementById('modalExplanationText'),
+    modalCorrectAnswer: document.getElementById('modalCorrectAnswer'),
+    modalCorrectAnswerText: document.getElementById('modalCorrectAnswerText'),
+    modalTimerText: document.getElementById('modalTimerText'),
+    modalNextBtn: document.getElementById('modalNextBtn'),
     topicFilter: document.getElementById('topicFilter'),
     statCurrentScore: document.getElementById('currentScore'),
     statCorrectAnswers: document.getElementById('correctAnswers'),
@@ -45,7 +51,20 @@ const elements = {
 // INITIALIZATION
 // ============================================
 
-function init() {
+// Global reference for question data
+let questionData = null;
+
+async function init() {
+    try {
+        const response = await fetch('question-bank.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        questionData = await response.json();
+    } catch (error) {
+        console.error('Failed to load question bank:', error);
+        alert('Failed to load questions. If viewing locally via file://, CORS may block fetch(). Please run a local server (e.g., npx serve) or use a browser extension.');
+        return;
+    }
+
     // Load questions from embedded data
     quizState.questions = questionData.questions;
 
@@ -60,7 +79,7 @@ function init() {
     animateThreeJS();
 
     // Event listeners
-    elements.nextBtn.addEventListener('click', () => {
+    elements.modalNextBtn.addEventListener('click', () => {
         AudioSystem.playButtonClick();
         nextQuestion();
     });
@@ -206,6 +225,16 @@ function loadQuestion() {
     const letters = ['A', 'B', 'C', 'D'];
     elements.optionsContainer.innerHTML = '';
 
+    // Shuffle options once per question
+    if (question._shuffled === undefined) {
+        let shuffledOptions = question.options.map((opt, index) => ({ text: opt, isCorrect: index === question.correct }));
+        shuffleArray(shuffledOptions);
+        
+        question.correct = shuffledOptions.findIndex(opt => opt.isCorrect);
+        question.options = shuffledOptions.map(opt => opt.text);
+        question._shuffled = true;
+    }
+
     question.options.forEach((option, index) => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
@@ -221,9 +250,8 @@ function loadQuestion() {
     });
 
     // Reset UI state
-    elements.explanation.classList.remove('show');
-    elements.nextBtn.disabled = true;
-    elements.nextBtn.textContent = quizState.currentIndex === quizState.sessionQuestions.length - 1 ? 'Finish Quiz' : 'Next Question';
+    elements.modalNextBtn.disabled = true;
+    elements.modalNextBtn.textContent = quizState.currentIndex === quizState.sessionQuestions.length - 1 ? 'Finish Quiz' : 'Next Question';
 
     // Update progress
     elements.currentQuestionNum.textContent = quizState.currentIndex + 1;
@@ -270,16 +298,62 @@ function selectAnswer(index) {
             createParticles(window.innerWidth / 2, window.innerHeight / 2, '#ef4444');
         }
 
-        // Show explanation
-        elements.explanationText.textContent = question.explanation;
-        elements.explanation.classList.add('show');
-
-        // Enable next button
-        elements.nextBtn.disabled = false;
-
         // Update stats
         updateStats();
+
+        // Show Modal Popup with Timer
+        showExplanationModal(index === question.correct, question.explanation, question.options[question.correct]);
+
     }, 300);
+}
+
+function showExplanationModal(isCorrect, explanation, correctAnswerText) {
+    if (isCorrect) {
+        elements.modalResultHeader.className = 'modal-header correct';
+        elements.modalResultHeader.innerHTML = `
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Correct!
+        `;
+        if (elements.modalCorrectAnswer) elements.modalCorrectAnswer.style.display = 'none';
+    } else {
+        elements.modalResultHeader.className = 'modal-header incorrect';
+        elements.modalResultHeader.innerHTML = `
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            Incorrect
+        `;
+        // Expose correct answer when they are wrong
+        if (elements.modalCorrectAnswer) {
+            elements.modalCorrectAnswer.style.display = 'block';
+            elements.modalCorrectAnswerText.textContent = correctAnswerText;
+        }
+    }
+
+    elements.modalExplanationText.textContent = explanation;
+    
+    // Reset button state
+    elements.modalNextBtn.disabled = true;
+    elements.explanationModal.classList.add('show');
+    
+    let timeLeft = 2;
+    elements.modalTimerText.textContent = `Please read the explanation... (${timeLeft}s)`;
+    
+    if (window._modalTimer) clearInterval(window._modalTimer);
+    
+    window._modalTimer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+            elements.modalTimerText.textContent = `Please read the explanation... (${timeLeft}s)`;
+        } else {
+            clearInterval(window._modalTimer);
+            elements.modalTimerText.textContent = "You may now proceed.";
+            elements.modalNextBtn.disabled = false;
+        }
+    }, 1000);
 }
 
 function getPointsForDifficulty(difficulty) {
@@ -292,6 +366,7 @@ function getPointsForDifficulty(difficulty) {
 // ============================================
 
 function nextQuestion() {
+    elements.explanationModal.classList.remove('show');
     quizState.currentIndex++;
     loadQuestion();
 }
