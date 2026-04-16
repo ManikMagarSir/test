@@ -14,11 +14,16 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #0a0a0a;
             color: #ffffff;
-            overflow-x: hidden;
             min-height: 100vh;
         }
 
@@ -52,6 +57,12 @@
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
@@ -317,6 +328,12 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            word-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .option-btn span:last-child {
+            flex: 1;
         }
 
         .option-btn:hover:not(:disabled) {
@@ -535,11 +552,12 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .quiz-section {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
             .sidebar {
                 position: static;
                 margin-bottom: 2rem;
+                min-width: 0;
             }
             .header, .container {
                 padding-left: 2rem;
@@ -560,8 +578,19 @@
             .header {
                 padding: 1rem;
             }
-            .header-content > div {
-                gap: 1rem;
+            .header-flex {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                position: relative;
+            }
+            .header-flex > div:first-child {
+                padding-right: 3rem;
+            }
+            .volume-control {
+                position: absolute;
+                top: 0;
+                right: 0;
             }
             .container {
                 padding: 1rem;
@@ -577,6 +606,10 @@
             .stat-card {
                 padding: 1rem;
                 min-width: 0; /* allows grid shrink */
+            }
+            .stat-label {
+                font-size: 0.7rem;
+                letter-spacing: 0;
             }
             .stat-value {
                 font-size: 1.75rem;
@@ -598,6 +631,7 @@
                 padding-bottom: 0.5rem;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none; /* Firefox */
+                width: 100%;
             }
             .topic-filter::-webkit-scrollbar {
                 display: none; /* Safari/Chrome hid scrollbar */
@@ -613,6 +647,9 @@
             }
             .random-indicator div {
                 font-size: 0.75rem !important;
+                align-items: flex-start !important;
+                line-height: 1.4;
+                flex-wrap: wrap; /* allow long text to flow correctly */
             }
 
             /* Quiz Main Container */
@@ -720,12 +757,12 @@
         <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="header-flex">
                     <div>
                         <h1 class="logo">SE Quiz Academy</h1>
                         <p class="tagline">Master Software Engineering Concepts • Interactive Learning Experience</p>
                     </div>
-                    <div class="volume-control" id="volumeControl" style="cursor: pointer; padding: 0.75rem; background: rgba(255,255,255,0.08); border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;" title="Toggle Sound">
+                    <div class="volume-control" id="volumeControl" title="Toggle Sound">
                         <!-- Volume On Icon -->
                         <svg class="volume-on" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
