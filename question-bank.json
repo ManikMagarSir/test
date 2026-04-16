@@ -14,12 +14,12 @@
       "difficulty": "hard",
       "question": "What is the primary function of the Project Charter?",
       "options": [
-        "To break down the project scope into manageable technical deliverables and work packages.",
         "To establish the detailed timeline, critical path, and resource allocation for the execution phase.",
-        "To officially authorize the project existence and give the project manager authority over resources.",
-        "To create a binding legal contract between the development team and the external stakeholders."
+        "To create a binding legal contract between the development team and the external stakeholders.",
+        "To break down the project scope into manageable technical deliverables and work packages.",
+        "To officially authorize the project existence and give the project manager authority over resources."
       ],
-      "correct": 2,
+      "correct": 3,
       "explanation": "A common misconception is that a Charter defines the schedule or functions as a detailed scope breakdown (that's the WBS/Schedule). It exists purely to authorize the project and grant the PM authority."
     },
     {
@@ -28,12 +28,12 @@
       "difficulty": "medium",
       "question": "Which of the following best describes the difference between Quality Assurance (QA) and Quality Control (QC)?",
       "options": [
-        "QA focuses on preventing defects by improving processes; QC focuses on identifying defects in the final product.",
-        "QA is executed by the test team; QC is executed by automated unit testing scripts.",
         "QA ensures the product is built within budget; QC ensures the product is built on time.",
-        "QA validates user stories with the client; QC verifies against the technical specifications."
+        "QA focuses on preventing defects by improving processes; QC focuses on identifying defects in the final product.",
+        "QA validates user stories with the client; QC verifies against the technical specifications.",
+        "QA is executed by the test team; QC is executed by automated unit testing scripts."
       ],
-      "correct": 0,
+      "correct": 1,
       "explanation": "QA is process-oriented (preventative), evaluating how the team builds software. QC is product-oriented (reactive), finding bugs in what was built. Many conflate the two as just 'testing'."
     },
     {
@@ -42,12 +42,12 @@
       "difficulty": "hard",
       "question": "When building a Work Breakdown Structure (WBS), how should the lowest level (the work package) be defined?",
       "options": [
-        "As a specific action verb or task assigned to a single developer (e.g., 'Write login API').",
         "As a measurable deliverable that can be reliably estimated for cost and duration.",
+        "As a set of features that fit within a single two-week sprint.",
         "As a chronological phase of the SDLC (e.g., 'Testing Phase 1').",
-        "As a set of features that fit within a single two-week sprint."
+        "As a specific action verb or task assigned to a single developer (e.g., 'Write login API')."
       ],
-      "correct": 1,
+      "correct": 0,
       "explanation": "A WBS is deliverable-oriented, not task-oriented. Writing 'Design Database' is a task, not a WBS work package. 'Database Schema Document' is the deliverable work package."
     },
     {
@@ -56,12 +56,12 @@
       "difficulty": "hard",
       "question": "A team encounters an issue that was explicitly predicted during planning. They immediately employ the funds set aside for this exact scenario. Which reserve did they use?",
       "options": [
-        "Management Reserve",
-        "Technical Debt Allowance",
+        "Contingency Reserve",
         "Sunk Cost Reserve",
-        "Contingency Reserve"
+        "Management Reserve",
+        "Technical Debt Allowance"
       ],
-      "correct": 3,
+      "correct": 0,
       "explanation": "Management reserves are for 'unknown-unknowns' (unforeseen risks). Contingency reserves are explicitly budgeted for 'known-unknowns' (identified risks inside the risk register)."
     },
     {
@@ -70,12 +70,12 @@
       "difficulty": "medium",
       "question": "A stakeholder demands an urgent new feature. The Project Manager immediately adds the task to the Gantt chart and assigns a developer. What critical PMBOK process was violated?",
       "options": [
-        "Perform Integrated Change Control",
+        "Validate Technical Debt",
         "Plan Resource Management",
         "Verify Scope",
-        "Validate Technical Debt"
+        "Perform Integrated Change Control"
       ],
-      "correct": 0,
+      "correct": 3,
       "explanation": "Adding features without assessing their impact on schedule, cost, and risk through a formal Change Control Board is the textbook definition of unchecked scope creep."
     },
     {
@@ -84,12 +84,12 @@
       "difficulty": "medium",
       "question": "During the Daily Scrum, the lead developer spends 10 minutes explaining the technical architecture of a database migration to the team. What is wrong with this scenario?",
       "options": [
-        "Database migrations should only be discussed during Sprint Review.",
         "The Product Owner must approve technical discussions before they happen.",
-        "The Daily Scrum is for inspecting progress toward the Sprint Goal, not detailed technical problem-solving.",
-        "The Scrum Master should have led the architecture discussion instead."
+        "Database migrations should only be discussed during Sprint Review.",
+        "The Scrum Master should have led the architecture discussion instead.",
+        "The Daily Scrum is for inspecting progress toward the Sprint Goal, not detailed technical problem-solving."
       ],
-      "correct": 2,
+      "correct": 3,
       "explanation": "A common anti-pattern is using the Daily Scrum for deep technical problem-solving. It is strictly a 15-minute synchronization to adapt the Sprint Backlog; problem-solving happens afterward."
     },
     {
@@ -99,11 +99,11 @@
       "question": "A story meets all functional acceptance criteria but lacks automated tests, which is a requirement in the team's Definition of Done (DoD). The sprint ends today. What happens to the story?",
       "options": [
         "It is marked as 'Done' but a technical debt ticket is created for the tests.",
-        "The Sprint is extended by one day so the team can write the tests.",
         "It is returned to the Product Backlog and not demonstrated at the Sprint Review.",
-        "It is demonstrated at the Sprint Review but released sub-optimally."
+        "It is demonstrated at the Sprint Review but released sub-optimally.",
+        "The Sprint is extended by one day so the team can write the tests."
       ],
-      "correct": 2,
+      "correct": 1,
       "explanation": "If an item does not meet the DoD, it is NOT 'Done'. It cannot be released and cannot be presented at the Sprint Review. It goes back to the backlog for reprioritization."
     },
     {
@@ -112,10 +112,10 @@
       "difficulty": "hard",
       "question": "Who is responsible for maximizing the value of the product resulting from the work of the Scrum Team?",
       "options": [
-        "The Scrum Master",
+        "The Project Sponsor",
         "The Development Team",
         "The Product Owner",
-        "The Project Sponsor"
+        "The Scrum Master"
       ],
       "correct": 2,
       "explanation": "Many think the Scrum Master owns value delivery, but the Scrum Master owns the 'process'. The Product Owner is solely responsible for maximizing product value via the Product Backlog."
@@ -126,12 +126,12 @@
       "difficulty": "medium",
       "question": "In Scrum, what is the primary purpose of the Sprint Retrospective?",
       "options": [
-        "For the team to inspect how the last Sprint went and identify process improvements.",
-        "To review the completed features and gather feedback from stakeholders.",
         "To estimate the difficulty of user stories for the upcoming Sprint.",
-        "To measure individual developer performance and assign velocity scores."
+        "To measure individual developer performance and assign velocity scores.",
+        "For the team to inspect how the last Sprint went and identify process improvements.",
+        "To review the completed features and gather feedback from stakeholders."
       ],
-      "correct": 0,
+      "correct": 2,
       "explanation": "Stakeholder review happens in the Sprint Review. The Retrospective focuses entirely on team dynamics, tools, and processes (internal reflection)."
     },
     {
@@ -140,12 +140,12 @@
       "difficulty": "hard",
       "question": "A team calculates their average velocity is 40 points per sprint. The Product Owner instructs them to pull 50 points into the next sprint to meet a deadline. What is the correct Scrum response?",
       "options": [
-        "The Scrum Master must authorize the scope increase.",
-        "The Developers alone decide how many items they pull into the Sprint Backlog.",
+        "The Product Owner is allowed to enforce scope as they represent the stakeholders.",
         "The team accepts 50 points but negotiates to skip writing documentation.",
-        "The Product Owner is allowed to enforce scope as they represent the stakeholders."
+        "The Developers alone decide how many items they pull into the Sprint Backlog.",
+        "The Scrum Master must authorize the scope increase."
       ],
-      "correct": 1,
+      "correct": 2,
       "explanation": "A major misconception is that Product Owners dictate sprint workload. The Product Owner prioritizes the WHAT. Developers exclusively determine exactly HOW MUCH work they can realistically pull into the sprint."
     },
     {
@@ -154,12 +154,12 @@
       "difficulty": "medium",
       "question": "You execute 'git commit --amend' on a commit you already pushed to a shared remote branch. What is the danger of this?",
       "options": [
-        "It permanently deletes all files modified in the commit.",
-        "It triggers an automatic conflict resolution wizard that locks the remote.",
+        "It removes the commit message and replaces it with a blank string.",
         "It changes the commit hash, causing history divergence for anyone else who pulled the branch.",
-        "It removes the commit message and replaces it with a blank string."
+        "It permanently deletes all files modified in the commit.",
+        "It triggers an automatic conflict resolution wizard that locks the remote."
       ],
-      "correct": 2,
+      "correct": 1,
       "explanation": "Amending rewrites history, creating a brand new commit object with a new hash. If someone else already pulled the old commit, pushing the amended one will cause severely tangled, divergent histories."
     },
     {
@@ -168,12 +168,12 @@
       "difficulty": "hard",
       "question": "Which of the following accurately describes the behavior of 'git fetch'?",
       "options": [
-        "It downloads new data from the remote repository and updates your remote-tracking branches, but leaves your working directory untouched.",
+        "It uploads your local commits to the remote tracking branch.",
         "It downloads remote changes and immediately updates your active working directory files to match the remote.",
         "It automatically resolves merge conflicts between your local branch and the remote branch.",
-        "It uploads your local commits to the remote tracking branch."
+        "It downloads new data from the remote repository and updates your remote-tracking branches, but leaves your working directory untouched."
       ],
-      "correct": 0,
+      "correct": 3,
       "explanation": "A common misconception is that fetch behaves like pull. Fetch only updates your hidden origin/ branch pointers; it does NOT merge anything into your current local working directory files. 'git pull' = 'git fetch' + 'git merge'."
     },
     {
@@ -182,12 +182,12 @@
       "difficulty": "hard",
       "question": "You realize you accidentally added a 5GB video file to Git 10 commits ago. Deleting the file and committing the deletion doesn't reduce the .git folder size. Why?",
       "options": [
-        "Because git tracks file deletions as hidden tags rather than removing the data.",
-        "Because the file still exists in the historical commit snapshots, so Git must retain its data permanently.",
         "Because git automatically forces large files into Git LFS which ignores local deletions.",
-        "Because you must restart the Git daemon to clear the local garbage collection cache."
+        "Because you must restart the Git daemon to clear the local garbage collection cache.",
+        "Because git tracks file deletions as hidden tags rather than removing the data.",
+        "Because the file still exists in the historical commit snapshots, so Git must retain its data permanently."
       ],
-      "correct": 1,
+      "correct": 3,
       "explanation": "Git is an immutable history ledger. Deleting a file in commit #11 doesn't erase it from commit #10. The binary blob remains in `.git/objects` forever unless you actively rewrite history (e.g., git filter-repo)."
     },
     {
@@ -196,12 +196,12 @@
       "difficulty": "medium",
       "question": "What specifically causes a 'merge conflict' in Git?",
       "options": [
-        "Pushing a branch to a remote server without holding write permissions.",
+        "Trying to merge a branch that was created more than 30 days ago.",
         "Attempting to merge code when local formatting standard linters fail.",
-        "Git encountering differing modifications on the exact same lines of the same file from two different branches.",
-        "Trying to merge a branch that was created more than 30 days ago."
+        "Pushing a branch to a remote server without holding write permissions.",
+        "Git encountering differing modifications on the exact same lines of the same file from two different branches."
       ],
-      "correct": 2,
+      "correct": 3,
       "explanation": "Merge conflicts strictly occur when developers alter the exact same lines of code (or one edits a file while the other deletes it), making it impossible for Git to safely guess which version to keep."
     },
     {
@@ -211,11 +211,11 @@
       "question": "You are halfway through a messy feature but need to urgently switch branches to fix a bug in production. You do not want to commit broken code. Which Git feature allows you to cleanly switch context?",
       "options": [
         "git rebase",
-        "git cherry-pick",
         "git stash",
+        "git cherry-pick",
         "git reset --soft"
       ],
-      "correct": 2,
+      "correct": 1,
       "explanation": "Git stash is specifically designed to safely shelve your dirty working directory modifications onto a temporary clipboard, restoring a clean state so you can change branches safely."
     },
     {
@@ -225,11 +225,11 @@
       "question": "Which statement best exemplifies a Non-Functional Requirement (NFR)?",
       "options": [
         "The system must email a PDF receipt to the user within 2 seconds of purchase.",
-        "The payment API must accept Visa, Mastercard, and American Express.",
         "The database must support a minimum of 5,000 concurrent read operations without latency exceeding 200ms.",
+        "The payment API must accept Visa, Mastercard, and American Express.",
         "The admin dashboard must include a button to suspend inactive user accounts."
       ],
-      "correct": 2,
+      "correct": 1,
       "explanation": "Functional requirements define 'what' the system does (features like emailing or accepting cards). NFRs define 'how well' it performs (scale, speed, security, concurrent limits)."
     },
     {
@@ -238,12 +238,12 @@
       "difficulty": "hard",
       "question": "During a risk assessment, a team notes that a third-party server goes down rarely, but if it does, the company loses $100,000 an hour. They decide to purchase an external SLA insurance policy to cover outage losses. What risk strategy is this?",
       "options": [
-        "Risk Avoidance",
-        "Risk Mitigation",
         "Risk Acceptance",
-        "Risk Transference"
+        "Risk Mitigation",
+        "Risk Transference",
+        "Risk Avoidance"
       ],
-      "correct": 3,
+      "correct": 2,
       "explanation": "Transference shifts the financial or operational impact of the risk entirely to a third party (like an insurance company or outsourced vendor). They didn't avoid the outage, they merely transferred liability."
     },
     {
@@ -252,12 +252,12 @@
       "difficulty": "medium",
       "question": "In MoSCoW prioritization, what occurs if an item classified as a 'Could Have' is not completed by the release date?",
       "options": [
-        "The release is marked as a failure and the project is audited.",
         "The product is still considered a success, as 'Could Haves' are exclusively nice-to-have bonuses.",
         "The team must automatically transition into an emergency sprint to complete it.",
+        "The release is marked as a failure and the project is audited.",
         "The Product Owner must halt the release entirely until the requirements trace is updated."
       ],
-      "correct": 1,
+      "correct": 0,
       "explanation": "'Could Have' items are technically possible but not critical for core launch functionality. Skipping them does not constitute project failure; it's exactly why prioritization exists."
     },
     {
@@ -267,11 +267,11 @@
       "question": "A stakeholder demands that 'The software must be user-friendly.' What is the fundamental flaw with this requirement?",
       "options": [
         "It focuses on the user interface instead of the backend logic.",
+        "It uses passive voice instead of active agile story phrasing.",
         "It lacks a strict priority ranking against functional requirements.",
-        "It is fundamentally unmeasurable and unverifiable through objective testing.",
-        "It uses passive voice instead of active agile story phrasing."
+        "It is fundamentally unmeasurable and unverifiable through objective testing."
       ],
-      "correct": 2,
+      "correct": 3,
       "explanation": "A core attribute of a valid requirement is testability. 'User-friendly' means nothing objectively. It must specify metrics like 'Users can locate X in under 3 clicks'."
     },
     {
@@ -282,10 +282,10 @@
       "options": [
         "Risk Mitigation",
         "Risk Acceptance",
-        "Risk Transference",
-        "Risk Avoidance"
+        "Risk Avoidance",
+        "Risk Transference"
       ],
-      "correct": 3,
+      "correct": 2,
       "explanation": "A common misconception is calling this 'Mitigation'. By completely removing the feature from the plan, the threat is 100% physically eliminated. This is pure Risk Avoidance."
     },
     {
@@ -294,12 +294,12 @@
       "difficulty": "hard",
       "question": "A developer runs the code coverage tool and boasts a 95% line coverage rate. Does this guarantee the software is fundamentally bug-free?",
       "options": [
-        "Yes, anything above 90% mathematically ensures all edge cases execute flawlessly.",
-        "No, coverage simply proves lines executed; it does not prove the logic validates edge cases or produces correct business values.",
+        "No, because line coverage ignores database latency testing.",
         "Yes, but only if the tests are written using White-Box instead of Black-Box methodologies.",
-        "No, because line coverage ignores database latency testing."
+        "Yes, anything above 90% mathematically ensures all edge cases execute flawlessly.",
+        "No, coverage simply proves lines executed; it does not prove the logic validates edge cases or produces correct business values."
       ],
-      "correct": 1,
+      "correct": 3,
       "explanation": "High code coverage is a deceptive metric. A test can execute 100% of the lines of a function but contain absolutely zero 'assert' statements, missing logical flaws entirely."
     },
     {
@@ -308,12 +308,12 @@
       "difficulty": "medium",
       "question": "Which testing type deliberately modifies the application's source code by introducing explicit bugs, specifically targeting whether or not the test suite catches them?",
       "options": [
-        "Regression Testing",
         "Mutation Testing",
         "Exploratory Testing",
-        "Sanity Testing"
+        "Sanity Testing",
+        "Regression Testing"
       ],
-      "correct": 1,
+      "correct": 0,
       "explanation": "Mutation testing literally 'mutates' the source code (like changing an > operator to <). If your tests still pass, your tests are weak. It tests the tests, not the app."
     },
     {
@@ -324,10 +324,10 @@
       "options": [
         "3, 5, 7, and 9 characters",
         "Testing strings of 100 characters and 1000 characters",
-        "0, 1, 10, and 11 characters",
-        "Using randomized alphanumeric strings of length 5"
+        "Using randomized alphanumeric strings of length 5",
+        "0, 1, 10, and 11 characters"
       ],
-      "correct": 2,
+      "correct": 3,
       "explanation": "BVA focuses explicitly on the knife edge. Errors occur because developers use <= instead of <. Testing immediately inside and outside the threshold (0, 1, 10, 11) exposes these off-by-one errors."
     },
     {
@@ -336,12 +336,12 @@
       "difficulty": "hard",
       "question": "A QA engineer tests a login screen by attempting to inject malicious SQL commands ('OR 1=1') into the password field without looking at the backend Python code. What testing technique is this?",
       "options": [
-        "White-Box Integration Testing",
         "Gray-Box Unit Testing",
         "Black-Box Security Testing",
+        "White-Box Integration Testing",
         "Static Code Analysis"
       ],
-      "correct": 2,
+      "correct": 1,
       "explanation": "Because the tester interacts strictly with the external interface and has no view of the internal logic or source code, this is definitively a Black-box approach to security testing."
     },
     {
@@ -350,12 +350,12 @@
       "difficulty": "hard",
       "question": "You fixed a minor typo in the CSS navigation bar. You trigger the CI pipeline, and it automatically reruns all 5,000 backend database logic tests. What principle validates this behavior?",
       "options": [
-        "Continuous Integration dictates that all tests must pass to prevent merge conflicts.",
         "Regression testing assumes any change, no matter how small, has the potential to break seemingly unrelated functionality.",
-        "Integration tests strictly require front-end DOM elements to validate backend API tokens.",
-        "Sanity testing demands that the entire platform validates every time a user logs in."
+        "Continuous Integration dictates that all tests must pass to prevent merge conflicts.",
+        "Sanity testing demands that the entire platform validates every time a user logs in.",
+        "Integration tests strictly require front-end DOM elements to validate backend API tokens."
       ],
-      "correct": 1,
+      "correct": 0,
       "explanation": "The core thesis behind Regression Testing is that complex software is heavily tangled. A CSS fix could theoretically overlap a hidden div that blocks an API button, requiring sweeping regression validation."
     },
     {
@@ -363,13 +363,13 @@
       "difficulty": "easy",
       "question": "What are the three constraints in the traditional Project Management Iron Triangle?",
       "options": [
-        "Scope, Time, and Quality",
-        "Cost, Risk, and Communication",
-        "Time, Cost, and Scope",
-        "Resources, Quality, and Stakeholders"
+        "Business Case, Benefits Management Plan, and Project Charter",
+        "Time, Cost, and Scope constraints that inherently balance one another",
+        "Project Scope Statement, Work Breakdown Structure, and WBS Dictionary",
+        "Quality baselines, Resource Leveling constraints, and Budget reserves"
       ],
-      "correct": 2,
-      "explanation": "The Iron Triangle (or Triple Constraint) dictates that you cannot change the Time, Cost, or Scope of a project without affecting at least one of the other two.",
+      "correct": 1,
+      "explanation": "The standard Iron Triangle is exclusively Time, Cost, and Scope. Students often mistakenly mix Quality or Risk into the primary points of the triangle.",
       "id": 26
     },
     {
@@ -377,12 +377,12 @@
       "difficulty": "medium",
       "question": "Which PMBOK process group is responsible for officially authorizing the start of a new project?",
       "options": [
-        "Planning",
-        "Executing",
         "Initiating",
-        "Monitoring and Controlling"
+        "Monitoring and Controlling",
+        "Planning",
+        "Executing"
       ],
-      "correct": 2,
+      "correct": 0,
       "explanation": "The Initiating process group involves developing the Project Charter and identifying stakeholders, which officially authorizes the project.",
       "id": 27
     },
@@ -391,10 +391,10 @@
       "difficulty": "medium",
       "question": "What is the primary output of the 'Create WBS' process?",
       "options": [
-        "The Project Schedule",
-        "The Scope Baseline",
-        "The Resource Breakdown Structure",
-        "The Gantt Chart"
+        "A comprehensive schedule of all sequential project tasks assigned to developers",
+        "The Scope Baseline (which includes the WBS, WBS Dictionary, and Scope Statement)",
+        "The finalized organizational chart detailing resource commitments",
+        "The comprehensive Project Management Plan"
       ],
       "correct": 1,
       "explanation": "The Scope Baseline consists of the Project Scope Statement, the WBS, and the WBS Dictionary.",
@@ -405,10 +405,10 @@
       "difficulty": "easy",
       "question": "Who is primarily responsible for ensuring that the project meets its stated objectives while balancing the triple constraint?",
       "options": [
-        "The Project Sponsor",
-        "The Project Manager",
         "The Technical Lead",
-        "The Client"
+        "The Project Manager",
+        "The Client",
+        "The Project Sponsor"
       ],
       "correct": 1,
       "explanation": "The Project Manager is assigned by the performing organization to lead the team that is responsible for achieving the project objectives.",
@@ -419,8 +419,8 @@
       "difficulty": "medium",
       "question": "Which document formally authorizes the existence of a project and gives the Project Manager authority to apply organizational resources?",
       "options": [
-        "Project Scope Statement",
         "Project Management Plan",
+        "Project Scope Statement",
         "Project Charter",
         "Business Case"
       ],
@@ -433,12 +433,12 @@
       "difficulty": "easy",
       "question": "According to the Agile Manifesto, what is valued more than 'comprehensive documentation'?",
       "options": [
-        "Contract Negotiation",
-        "Working Software",
-        "Processes and Tools",
-        "Following a Plan"
+        "Replacing project managers with self-organizing Scrum Masters",
+        "Strict adherence to the 15-minute daily standup ritual",
+        "Working software delivery over comprehensive documentation",
+        "Eliminating all up-front requirements gathering phases"
       ],
-      "correct": 1,
+      "correct": 2,
       "explanation": "The Agile Manifesto states: 'Working software over comprehensive documentation'.",
       "id": 31
     },
@@ -447,10 +447,10 @@
       "difficulty": "easy",
       "question": "What are the three core roles in the Scrum framework?",
       "options": [
-        "Project Manager, Developer, Tester",
+        "Business Analyst, Product Owner, Program Manager",
         "Product Owner, Scrum Master, Developers",
-        "Scrum Master, Stakeholder, Team Lead",
-        "Business Analyst, Product Owner, Program Manager"
+        "Project Manager, Developer, Tester",
+        "Scrum Master, Stakeholder, Team Lead"
       ],
       "correct": 1,
       "explanation": "Scrum defines only three roles: the Product Owner, the Scrum Master, and the Developers (the Team).",
@@ -461,12 +461,12 @@
       "difficulty": "medium",
       "question": "What is the artifact that contains all features, functions, and fixes needed for the product?",
       "options": [
-        "Sprint Backlog",
         "Product Backlog",
         "Release Plan",
+        "Sprint Backlog",
         "Sprint Goal"
       ],
-      "correct": 1,
+      "correct": 0,
       "explanation": "The Product Backlog is the single source of truth for all intended changes to the product, maintained by the Product Owner.",
       "id": 33
     },
@@ -475,12 +475,12 @@
       "difficulty": "easy",
       "question": "What is the maximum recommended duration for a Daily Scrum meeting?",
       "options": [
-        "15 minutes",
-        "30 minutes",
-        "45 minutes",
-        "1 hour"
+        "As long as necessary to complete the burndown chart updates",
+        "Until all technical blockers are thoroughly diagnosed and assigned",
+        "Approximately 5 minutes per developer on the team",
+        "A strict 15-minute timebox designed exclusively for sprint goal sync"
       ],
-      "correct": 0,
+      "correct": 3,
       "explanation": "The Daily Scrum is time-boxed to a maximum of 15 minutes to keep it concise and focused.",
       "id": 34
     },
@@ -489,8 +489,8 @@
       "difficulty": "medium",
       "question": "During which Scrum ceremony does the team demonstrate the Working Increment to stakeholders?",
       "options": [
-        "Sprint Retrospective",
         "Daily Scrum",
+        "Sprint Retrospective",
         "Sprint Review",
         "Sprint Planning"
       ],
@@ -503,12 +503,12 @@
       "difficulty": "easy",
       "question": "What does the 'git clone' command do?",
       "options": [
+        "Branches the current repository into a secondary project.",
         "Synchronizes local changes with the remote server.",
         "Downloads a complete copy of an existing remote repository to your local machine.",
-        "Creates a new, empty git repository in the current directory.",
-        "Branches the current repository into a secondary project."
+        "Creates a new, empty git repository in the current directory."
       ],
-      "correct": 1,
+      "correct": 2,
       "explanation": "git clone is used to target an existing repository and create a full local copy of it on your machine.",
       "id": 36
     },
@@ -517,12 +517,12 @@
       "difficulty": "easy",
       "question": "Which of the following commands stages all modified and deleted files for the next commit?",
       "options": [
+        "git commit -a",
         "git stage *",
         "git add .",
-        "git commit -a",
         "git push --all"
       ],
-      "correct": 1,
+      "correct": 2,
       "explanation": "git add . stages all changes (new, modified, deleted) in the current directory and its subdirectories.",
       "id": 37
     },
@@ -531,12 +531,12 @@
       "difficulty": "medium",
       "question": "What is the primary difference between git pull and git fetch?",
       "options": [
-        "git pull only downloads metadata; git fetch downloads actual files.",
-        "git pull creates branches; git fetch deletes them.",
-        "git fetch downloads changes without merging; git pull downloads changes and immediately merges them.",
-        "There is no difference; they are aliases for the same action."
+        "Fetch downloads history safely without altering working tree code; Pull performs a fetch followed by an immediate active merge",
+        "Pulling securely downloads changes to a hidden origin tracking location, fetching forces an immediate working-directory copy",
+        "Fetch connects to the remote daemon whereas pull strictly targets locally cached data",
+        "Fetch only retrieves branch metadata names while pull downloads actual file contents"
       ],
-      "correct": 2,
+      "correct": 0,
       "explanation": "Fetch safely updates your remote tracking branches. Pull actually executes a fetch AND an immediate merge into your active branch.",
       "id": 38
     },
@@ -545,10 +545,10 @@
       "difficulty": "hard",
       "question": "What happens if you run 'git commit --amend' while you have new files staged in the index?",
       "options": [
-        "The new files are discarded and the previous commit message is changed.",
-        "The staged files are combined with the previous commit, creating a single updated commit.",
-        "Git rejects the command because you cannot amend when the index is dirty.",
-        "The previous commit is deleted and a new commit is created containing only the staged files."
+        "It forces Git to drop the previous commit and revert the active working directory",
+        "It combines currently staged files into the previous commit signature, replacing it entirely with a new hash",
+        "It allows editing of the commit message but physically prevents adding new files to it",
+        "It modifies the existing most recent commit signature and payload seamlessly without changing the commit hash"
       ],
       "correct": 1,
       "explanation": "git commit --amend modifies the most recent commit. If files are staged, they are rolled into that last commit instead of creating a separate new one.",
@@ -559,10 +559,10 @@
       "difficulty": "medium",
       "question": "In Git, what is the 'HEAD' pointer?",
       "options": [
-        "It points to the oldest commit in the repository's history.",
+        "It signifies the latest commit pushed to the origin repository.",
         "It is the branch representing the production server codebase.",
         "It is a pointer to the current commit or branch your working directory is currently based on.",
-        "It signifies the latest commit pushed to the origin repository."
+        "It points to the oldest commit in the repository's history."
       ],
       "correct": 2,
       "explanation": "HEAD is simply a reference that tells Git what branch or specific commit you currently have checked out in your working tree.",
@@ -573,12 +573,12 @@
       "difficulty": "medium",
       "question": "What characterizes a 'Functional Requirement'?",
       "options": [
-        "It defines constraints on the system such as performance or security.",
-        "It describes a specific behavior or task the system must accomplish.",
+        "It outlines the budget for the software development cycle.",
         "It mandates the programming languages used by the developers.",
-        "It outlines the budget for the software development cycle."
+        "It defines constraints on the system such as performance or security.",
+        "It describes a specific behavior or task the system must accomplish."
       ],
-      "correct": 1,
+      "correct": 3,
       "explanation": "Functional requirements define 'what' the system should do (e.g., 'The system allows users to add items to a cart').",
       "id": 41
     },
@@ -587,10 +587,10 @@
       "difficulty": "easy",
       "question": "In the MoSCoW prioritization technique, what does the 'M' stand for?",
       "options": [
-        "Maybe Have",
-        "Must Have",
         "Maximum Have",
-        "Moderate Have"
+        "Must Have",
+        "Moderate Have",
+        "Maybe Have"
       ],
       "correct": 1,
       "explanation": "MoSCoW stands for Must have, Should have, Could have, and Won't have.",
@@ -602,11 +602,11 @@
       "question": "If a project team identifies a high-impact risk and decides to purchase insurance to cover potential losses, which risk response strategy are they using?",
       "options": [
         "Avoidance",
-        "Mitigation",
         "Transference",
+        "Mitigation",
         "Acceptance"
       ],
-      "correct": 2,
+      "correct": 1,
       "explanation": "Risk Transference involves shifting the financial impact of a risk to a third party, such as buying insurance.",
       "id": 43
     },
@@ -617,10 +617,10 @@
       "options": [
         "Focus Groups",
         "Questionnaires",
-        "Observation / Job Shadowing",
-        "Prototyping"
+        "Prototyping",
+        "Observation / Job Shadowing"
       ],
-      "correct": 2,
+      "correct": 3,
       "explanation": "Observation (sometimes called shadowing) involves quietly observing a user in their natural work environment to document their exact workflows.",
       "id": 44
     },
@@ -629,12 +629,12 @@
       "difficulty": "hard",
       "question": "A risk is assessed by plotting its 'Probability' against its 'Impact'. What is the resulting matrix commonly called?",
       "options": [
-        "The Risk Breakdown Structure (RBS)",
-        "The Risk Register",
         "The Probability/Impact Matrix (PI Matrix)",
-        "The Ishikawa Diagram"
+        "The Ishikawa Diagram",
+        "The Risk Register",
+        "The Risk Breakdown Structure (RBS)"
       ],
-      "correct": 2,
+      "correct": 0,
       "explanation": "A Probability and Impact Matrix visually maps risks to determine their overall severity rating (Low, Medium, High).",
       "id": 45
     },
@@ -643,12 +643,12 @@
       "difficulty": "easy",
       "question": "Which phase of testing verifies that individual components or modules of code function correctly in isolation?",
       "options": [
-        "System Testing",
-        "Unit Testing",
         "Acceptance Testing",
-        "Integration Testing"
+        "Integration Testing",
+        "System Testing",
+        "Unit Testing"
       ],
-      "correct": 1,
+      "correct": 3,
       "explanation": "Unit testing tests individual functions, methods, or classes directly, usually using mock objects to isolate the code.",
       "id": 46
     },
@@ -671,12 +671,12 @@
       "difficulty": "medium",
       "question": "In testing terminology, what is 'Black-box testing'?",
       "options": [
+        "Testing systems that have been blacklisted by antivirus scanners.",
         "Testing the internal structure, code, and logic of an application.",
         "Testing the application without knowing its internal code structure, focusing only on outputs based on inputs.",
-        "Testing systems that have been blacklisted by antivirus scanners.",
         "A testing technique purely focused on hardware failures."
       ],
-      "correct": 1,
+      "correct": 2,
       "explanation": "Black-box testing is purely functional testing from the user's perspective, without looking at or knowing the internal code execution path.",
       "id": 48
     },
@@ -685,12 +685,12 @@
       "difficulty": "hard",
       "question": "If an input field only accepts number values from 1 to 100, which of the following represents an Equivalence Partitioning test strategy?",
       "options": [
-        "Testing 0, 1, 100, and 101.",
-        "Testing every single integer from 1 to 100.",
         "Testing exactly three values: -10, 50, and 120.",
-        "Testing the application on Chrome, Firefox, and Safari."
+        "Testing the application on Chrome, Firefox, and Safari.",
+        "Testing every single integer from 1 to 100.",
+        "Testing 0, 1, 100, and 101."
       ],
-      "correct": 2,
+      "correct": 0,
       "explanation": "Equivalence Partitioning divides inputs into valid and invalid classes. -10 (invalid low), 50 (valid), and 120 (invalid high) covers all partitions efficiently without testing every number.",
       "id": 49
     },
@@ -700,11 +700,11 @@
       "question": "What is Regression Testing?",
       "options": [
         "Testing legacy systems before they are decommissioned.",
+        "Testing to see how the application behaves when network connectivity regressions occur.",
         "Re-running previously passed tests after a code change to ensure existing functionality did not break.",
-        "Testing the application manually to find interface bugs.",
-        "Testing to see how the application behaves when network connectivity regressions occur."
+        "Testing the application manually to find interface bugs."
       ],
-      "correct": 1,
+      "correct": 2,
       "explanation": "Whenever new code is added, Regression Testing ensures the baseline system hasn't 'regressed' or broken due to the addition.",
       "id": 50
     }
