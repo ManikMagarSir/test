@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering Quiz - Interactive Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Three.js Canvas Container */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            backdrop-filter: blur(1px);
+        }
+
+        /* Header */
+        .header {
+            padding: 2rem 4rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideDown 0.8s ease;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 4rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            flex: 1;
+            min-width: 200px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .topic-filter {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .topic-btn {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .topic-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateX(8px);
+        }
+
+        .volume-control {
+            cursor: pointer;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .volume-control:hover {
+            background: rgba(255, 255, 255, 0.12) !important;
+            transform: scale(1.05);
+        }
+
+        .volume-control .volume-on,
+        .volume-control .volume-off {
+            display: none;
+        }
+
+        .volume-control:not(.off) .volume-on {
+            display: block;
+        }
+
+        .volume-control.off .volume-off {
+            display: block;
+        }
+
+        .topic-btn.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+            border-color: #6366f1;
+            color: #ffffff;
+        }
+
+        .topic-count {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.25rem;
+        }
+
+        .random-indicator {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Quiz Main */
+        .quiz-main {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7, #ec4899);
+            animation: gradientShift 4s ease infinite;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .question-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .topic-tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .difficulty-easy {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .difficulty-medium {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .difficulty-hard {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .question-number {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-btn {
+            padding: 1.25rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateX(8px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .option-btn.selected {
+            background: rgba(99, 102, 241, 0.25);
+            border-color: #6366f1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .option-btn.correct {
+            background: rgba(34, 197, 94, 0.25);
+            border-color: #22c55e;
+            animation: correctPulse 0.6s ease;
+        }
+
+        .option-btn.incorrect {
+            background: rgba(239, 68, 68, 0.25);
+            border-color: #ef4444;
+            animation: shake 0.5s ease;
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .option-letter {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .option-btn.selected .option-letter,
+        .option-btn.correct .option-letter,
+        .option-btn.incorrect .option-letter {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Explanation */
+        .explanation {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid #6366f1;
+            border-radius: 0 12px 12px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .explanation.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .explanation-title {
+            font-weight: 600;
+            color: #818cf8;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Results Screen */
+        .results-screen {
+            text-align: center;
+            padding: 4rem 2rem;
+            display: none;
+        }
+
+        .results-screen.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .results-score {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 2rem 0;
+        }
+
+        .results-message {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .quiz-section {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            .header, .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            .logo {
+                font-size: 1.75rem;
+            }
+            .tagline {
+                font-size: 0.85rem;
+            }
+            .header {
+                padding: 1rem;
+            }
+            .header-content > div {
+                gap: 1rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            
+            /* Stats Grid */
+            .stats-bar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .stat-card {
+                padding: 1rem;
+                min-width: 0; /* allows grid shrink */
+            }
+            .stat-value {
+                font-size: 1.75rem;
+            }
+
+            /* Sidebar / Topics Layout */
+            .sidebar {
+                padding: 1.25rem;
+                border-radius: 16px;
+                margin-bottom: 1rem;
+            }
+            .sidebar h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            .topic-filter {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
+            }
+            .topic-filter::-webkit-scrollbar {
+                display: none; /* Safari/Chrome hid scrollbar */
+            }
+            .topic-btn {
+                flex: 0 0 auto;
+                white-space: nowrap;
+                padding: 0.75rem 1.25rem;
+            }
+            
+            .random-indicator {
+                margin-top: 0.5rem;
+            }
+            .random-indicator div {
+                font-size: 0.75rem !important;
+            }
+
+            /* Quiz Main Container */
+            .quiz-main {
+                padding: 1.5rem 1.25rem;
+                border-radius: 16px;
+            }
+            .question-header {
+                flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .question-meta {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .question-text {
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Options Touch Targets */
+            .option-btn {
+                padding: 1rem;
+                font-size: 0.95rem;
+                border-radius: 12px;
+                min-height: 56px;
+                gap: 0.75rem;
+            }
+            .option-letter {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+
+            /* Action Buttons full width */
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-top: 1.5rem;
+            }
+            .btn {
+                width: 100%;
+                min-height: 56px;
+                font-size: 1.1rem;
+            }
+
+            /* Explanation */
+            .explanation {
+                padding: 1.25rem;
+                border-radius: 12px;
+                border-left: none;
+                border-top: 4px solid #6366f1;
+            }
+
+            /* Results Screen */
+            .results-screen {
+                padding: 2rem 1rem;
+            }
+            .results-title {
+                font-size: 2.25rem;
+            }
+            .results-score {
+                font-size: 3rem;
+            }
+            .results-message {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Three.js Background -->
+    <div id="canvas-container"></div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1 class="logo">SE Quiz Academy</h1>
+                        <p class="tagline">Master Software Engineering Concepts • Interactive Learning Experience</p>
+                    </div>
+                    <div class="volume-control" id="volumeControl" style="cursor: pointer; padding: 0.75rem; background: rgba(255,255,255,0.08); border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;" title="Toggle Sound">
+                        <!-- Volume On Icon -->
+                        <svg class="volume-on" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                        <!-- Volume Off Icon -->
+                        <svg class="volume-off" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <line x1="23" y1="9" x2="17" y2="15"></line>
+                            <line x1="17" y1="9" x2="23" y2="15"></line>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Quiz Area -->
+        <div class="container">
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-label">Total Questions</div>
+                    <div class="stat-value" id="totalQuestions">30</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Current Score</div>
+                    <div class="stat-value" id="currentScore">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Correct Answers</div>
+                    <div class="stat-value" id="correctAnswers">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Streak</div>
+                    <div class="stat-value" id="streak">0</div>
+                </div>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="quiz-section">
+                <aside class="sidebar">
+                    <h3>Topics</h3>
+                    <div class="topic-filter" id="topicFilter">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                    <div class="random-indicator">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                            <span>Randomized Questions — No Repeats per Session</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Quiz -->
+                <main class="quiz-main">
+                    <!-- Quiz Content -->
+                    <div id="quizContent">
+                        <!-- Progress -->
+                        <div class="progress-container">
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Question <span id="currentQuestionNum">1</span> of <span id="totalQuestionCount">30</span></span>
+                                <span id="progressPercent">0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Question -->
+                        <div class="question-header">
+                            <div class="question-number" id="questionNumberDisplay">Question 1</div>
+                            <div class="question-meta">
+                                <span class="meta-tag topic-tag" id="questionTopic">Topic</span>
+                                <span class="meta-tag difficulty-easy" id="questionDifficulty">Easy</span>
+                            </div>
+                        </div>
+
+                        <div class="question-text" id="questionText">
+                            <!-- Populated by JavaScript -->
+                        </div>
+
+                        <!-- Options -->
+                        <div class="options-container" id="optionsContainer">
+                            <!-- Populated by JavaScript -->
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="nextBtn" disabled>Next Question</button>
+                            <button class="btn btn-secondary" id="skipBtn">Skip</button>
+                        </div>
+
+                        <!-- Explanation -->
+                        <div class="explanation" id="explanation">
+                            <div class="explanation-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                                Explanation
+                            </div>
+                            <p id="explanationText"></p>
+                        </div>
+                    </div>
+
+                    <!-- Results Screen -->
+                    <div class="results-screen" id="resultsScreen">
+                        <h2 class="results-title">Quiz Complete!</h2>
+                        <div class="results-score" id="finalScore">0%</div>
+                        <p class="results-message" id="resultsMessage">Great job!</p>
+                        <button class="btn btn-primary" onclick="restartQuiz()">Start New Quiz</button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Question data - embedded for easy loading
+        const questionData = {
+            "title": "Software Engineering Quiz - Complete Question Bank",
+            "topics": [
+                "PMBOK & Project Management",
+                "Agile & Scrum",
+                "Version Control & Git",
+                "Risk & Requirements",
+                "Software Testing"
+            ],
+            "questions": [
+                {
+                    "id": 1,
+                    "topic": "PMBOK & Project Management",
+                    "difficulty": "easy",
+                    "question": "How many knowledge areas are there in PMBOK?",
+                    "options": ["9", "10", "12", "8"],
+                    "correct": 1,
+                    "explanation": "PMBOK Guide 7th edition defines 12 principles and 8 performance domains, but traditionally PMBOK had 10 knowledge areas. The latest edition focuses on principles rather than knowledge areas."
+                },
+                {
+                    "id": 2,
+                    "topic": "PMBOK & Project Management",
+                    "difficulty": "medium",
+                    "question": "What are the five process groups in project management according to PMBOK?",
+                    "options": [
+                        "Initiating, Planning, Executing, Monitoring, Closing",
+                        "Starting, Organizing, Leading, Controlling, Ending",
+                        "Define, Design, Develop, Deploy, Deliver",
+                        "Conceive, Develop, Implement, Operate, Terminate"
+                    ],
+                    "correct": 0,
+                    "explanation": "The 5 Process Groups are: Initiating Process Group, Planning Process Group, Executing Process Group, Monitoring and Controlling Process Group, and Closing Process Group."
+                },
+                {
+                    "id": 3,
+                    "topic": "PMBOK & Project Management",
+                    "difficulty": "medium",
+                    "question": "What does the acronym SMART stand for in project management?",
+                    "options": [
+                        "Specific, Measurable, Achievable, Relevant, Time-bound",
+                        "Simple, Manageable, Actionable, Realistic, Trackable",
+                        "Strategic, Measurable, Aligned, Results-driven, Timely",
+                        "Specific, Measurable, Accountable, Relevant, Traceable"
+                    ],
+                    "correct": 0,
+                    "explanation": "SMART criteria ensure objectives are Specific, Measurable, Achievable/Assignable, Relevant/Realistic, and Time-bound."
+                },
+                {
+                    "id": 4,
+                    "topic": "PMBOK & Project Management",
+                    "difficulty": "hard",
+                    "question": "What is the difference between 'Baseline' and 'Target' in project management?",
+                    "options": [
+                        "Baseline is the original plan; Target is what you aim to achieve",
+                        "Baseline is for cost; Target is for schedule",
+                        "They are interchangeable terms",
+                        "Baseline is fixed; Target can change"
+                    ],
+                    "correct": 0,
+                    "explanation": "Baseline is the approved version of a work product that can be changed only through formal change control. Target is what you aim to achieve."
+                },
+                {
+                    "id": 5,
+                    "topic": "Agile & Scrum",
+                    "difficulty": "easy",
+                    "question": "What are the three roles in a Scrum team?",
+                    "options": [
+                        "Product Owner, Scrum Master, Development Team",
+                        "Project Manager, Business Analyst, Developers",
+                        "Stakeholder, Client, Team Lead",
+                        "Manager, Developer, Tester"
+                    ],
+                    "correct": 0,
+                    "explanation": "Scrum has three defined roles: Product Owner (represents stakeholders), Scrum Master (facilitates process), and Development Team (builds the product)."
+                },
+                {
+                    "id": 6,
+                    "topic": "Agile & Scrum",
+                    "difficulty": "easy",
+                    "question": "What is a Sprint in Scrum?",
+                    "options": [
+                        "A time-boxed iteration of 1-4 weeks",
+                        "A daily meeting",
+                        "The final delivery phase",
+                        "A planning document"
+                    ],
+                    "correct": 0,
+                    "explanation": "A Sprint is a time-boxed iteration (typically 1-4 weeks) during which a potentially releasable product increment is created."
+                },
+                {
+                    "id": 7,
+                    "topic": "Agile & Scrum",
+                    "difficulty": "medium",
+                    "question": "What are the five Scrum ceremonies?",
+                    "options": [
+                        "Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Backlog Refinement",
+                        "Planning, Development, Testing, Review, Deployment",
+                        "Kickoff, Standup, Demo, Retrospective, Grooming",
+                        "Sprint Planning, Daily Standup, Sprint Demo, Sprint Retrospective, Grooming"
+                    ],
+                    "correct": 0,
+                    "explanation": "The 5 Scrum ceremonies are: Sprint Planning, Daily Scrum (Daily Standup), Sprint Review, Sprint Retrospective, and Product Backlog Refinement."
+                },
+                {
+                    "id": 8,
+                    "topic": "Agile & Scrum",
+                    "difficulty": "medium",
+                    "question": "What is the purpose of the Sprint Retrospective?",
+                    "options": [
+                        "To reflect on the process and identify improvements for next sprint",
+                        "To showcase completed work to stakeholders",
+                        "To plan the next sprint's work",
+                        "To assign tasks to team members"
+                    ],
+                    "correct": 0,
+                    "explanation": "The Sprint Retrospective is held at the end of each sprint for the Scrum Team to inspect itself and create a plan for improvements."
+                },
+                {
+                    "id": 9,
+                    "topic": "Agile & Scrum",
+                    "difficulty": "hard",
+                    "question": "What is the key difference between Agile and Scrum?",
+                    "options": [
+                        "Agile is a mindset/philosophy; Scrum is a framework implementing Agile",
+                        "Agile is for software; Scrum is for hardware",
+                        "Scrum is more flexible than Agile",
+                        "They are the same thing"
+                    ],
+                    "correct": 0,
+                    "explanation": "Agile is a set of values and principles (mindset). Scrum is a specific framework with prescribed roles, events, and artifacts that implements Agile principles."
+                },
+                {
+                    "id": 10,
+                    "topic": "Version Control & Git",
+                    "difficulty": "easy",
+                    "question": "What command initializes a new Git repository?",
+                    "options": ["git init", "git new", "git create", "git start"],
+                    "correct": 0,
+                    "explanation": "git init creates a new empty Git repository in the current directory."
+                },
+                {
+                    "id": 11,
+                    "topic": "Version Control & Git",
+                    "difficulty": "easy",
+                    "question": "What does the git commit command do?",
+                    "options": [
+                        "Saves changes to the local repository",
+                        "Uploads changes to remote server",
+                        "Shows current changes",
+                        "Creates a new branch"
+                    ],
+                    "correct": 0,
+                    "explanation": "git commit creates a snapshot of the current state of the repository and saves it to the local repository's history."
+                },
+                {
+                    "id": 12,
+                    "topic": "Version Control & Git",
+                    "difficulty": "medium",
+                    "question": "What is the difference between git merge and git rebase?",
+                    "options": [
+                        "Merge creates a new commit; Rebase rewrites commit history",
+                        "Rebase is faster; Merge is safer",
+                        "Merge is for branches; Rebase is for commits",
+                        "They do the same thing"
+                    ],
+                    "correct": 0,
+                    "explanation": "git merge combines branches with a merge commit, preserving history. git rebase moves the entire branch to begin on the tip of another branch, creating a linear history by rewriting commits."
+                },
+                {
+                    "id": 13,
+                    "topic": "Version Control & Git",
+                    "difficulty": "medium",
+                    "question": "What does a 'detached HEAD' state mean in Git?",
+                    "options": [
+                        "HEAD points directly to a commit, not a branch",
+                        "The repository is corrupted",
+                        "You have uncommitted changes",
+                        "You're on a remote branch"
+                    ],
+                    "correct": 0,
+                    "explanation": "A detached HEAD occurs when HEAD points to a specific commit rather than a branch name, typically after checking out an old commit or a tag."
+                },
+                {
+                    "id": 14,
+                    "topic": "Version Control & Git",
+                    "difficulty": "hard",
+                    "question": "What is the purpose of 'git cherry-pick'?",
+                    "options": [
+                        "Apply specific commits from one branch to another",
+                        "Pick the best commit message",
+                        "Select which files to commit",
+                        "Choose which branches to merge"
+                    ],
+                    "correct": 0,
+                    "explanation": "git cherry-pick allows you to apply the changes introduced by one or more commits from another branch onto your current branch."
+                },
+                {
+                    "id": 15,
+                    "topic": "Risk & Requirements",
+                    "difficulty": "easy",
+                    "question": "What are the two main types of requirements in software engineering?",
+                    "options": [
+                        "Functional and Non-functional",
+                        "Technical and Business",
+                        "User and System",
+                        "High-level and Low-level"
+                    ],
+                    "correct": 0,
+                    "explanation": "Functional requirements describe what the system should do. Non-functional requirements describe how the system should perform (performance, security, usability, etc.)."
+                },
+                {
+                    "id": 16,
+                    "topic": "Risk & Requirements",
+                    "difficulty": "medium",
+                    "question": "What is RAID in project management?",
+                    "options": [
+                        "Risks, Assumptions, Issues, Dependencies",
+                        "Requirements, Actions, Issues, Decisions",
+                        "Results, Actions, Inputs, Deliverables",
+                        "Risks, Actions, Inputs, Decisions"
+                    ],
+                    "correct": 0,
+                    "explanation": "RAID is a project management acronym: Risks, Assumptions, Issues, and Dependencies - a log to track these critical project elements."
+                },
+                {
+                    "id": 17,
+                    "topic": "Risk & Requirements",
+                    "difficulty": "medium",
+                    "question": "What is risk mitigation?",
+                    "options": [
+                        "Taking steps to reduce probability and/or impact of a risk",
+                        "Eliminating all risks completely",
+                        "Accepting the risk and dealing with it if it occurs",
+                        "Transferring risk to another party"
+                    ],
+                    "correct": 0,
+                    "explanation": "Risk mitigation involves proactive actions to reduce either the probability of a risk occurring or its impact if it does occur."
+                },
+                {
+                    "id": 18,
+                    "topic": "Risk & Requirements",
+                    "difficulty": "hard",
+                    "question": "What is the difference between 'Risk Avoidance' and 'Risk Transference'?",
+                    "options": [
+                        "Avoidance eliminates the risk; Transference shifts it to a third party",
+                        "Avoidance is cheaper; Transference is more expensive",
+                        "Avoidance is for threats; Transference is for opportunities",
+                        "They are the same strategy"
+                    ],
+                    "correct": 0,
+                    "explanation": "Risk avoidance changes plans to eliminate the risk entirely. Risk transference shifts the risk's impact to a third party (e.g., insurance, outsourcing)."
+                },
+                {
+                    "id": 19,
+                    "topic": "Software Testing",
+                    "difficulty": "easy",
+                    "question": "What is the difference between verification and validation?",
+                    "options": [
+                        "Verification: Are we building the product right? Validation: Are we building the right product?",
+                        "Verification: Are we building the right product? Validation: Are we building the product right?",
+                        "Verification is manual; Validation is automated",
+                        "They are the same"
+                    ],
+                    "correct": 0,
+                    "explanation": "Verification ensures the product meets specifications (building right). Validation ensures the product meets user needs (building right product)."
+                },
+                {
+                    "id": 20,
+                    "topic": "Software Testing",
+                    "difficulty": "medium",
+                    "question": "What are the different levels of software testing?",
+                    "options": [
+                        "Unit, Integration, System, Acceptance",
+                        "White-box, Black-box, Gray-box",
+                        "Static, Dynamic",
+                        "Functional, Non-functional"
+                    ],
+                    "correct": 0,
+                    "explanation": "The four main testing levels: Unit testing (individual components), Integration testing (component interactions), System testing (complete system), Acceptance testing (user acceptance)."
+                },
+                {
+                    "id": 21,
+                    "topic": "Software Testing",
+                    "difficulty": "medium",
+                    "question": "What is regression testing?",
+                    "options": [
+                        "Testing to ensure new changes don't break existing functionality",
+                        "Testing the software after it has been modified",
+                        "Testing for performance issues",
+                        "Testing by developers themselves"
+                    ],
+                    "correct": 0,
+                    "explanation": "Regression testing verifies that recent code changes haven't broken existing functionality. It's typically automated and run frequently."
+                },
+                {
+                    "id": 22,
+                    "topic": "Software Testing",
+                    "difficulty": "hard",
+                    "question": "What is the difference between black-box and white-box testing?",
+                    "options": [
+                        "Black-box tests functionality without code knowledge; White-box tests internal structure with code knowledge",
+                        "Black-box is manual; White-box is automated",
+                        "Black-box is for unit testing; White-box for system testing",
+                        "There is no difference"
+                    ],
+                    "correct": 0,
+                    "explanation": "Black-box testing tests functionality without internal code knowledge. White-box testing (clear-box) tests internal code structure, logic, and paths."
+                },
+                {
+                    "id": 23,
+                    "topic": "Version Control & Git",
+                    "difficulty": "medium",
+                    "question": "What does the git fetch command do compared to git pull?",
+                    "options": [
+                        "fetch downloads remote changes but doesn't merge; pull fetches and merges",
+                        "fetch is faster than pull",
+                        "pull is for branches; fetch is for commits",
+                        "They are identical"
+                    ],
+                    "correct": 0,
+                    "explanation": "git fetch downloads remote changes without merging them. git pull = git fetch + git merge, automatically merging fetched changes into the current branch."
+                },
+                {
+                    "id": 24,
+                    "topic": "Agile & Scrum",
+                    "difficulty": "medium",
+                    "question": "What is ' Velocity ' in Scrum?",
+                    "options": [
+                        "The amount of work a team completes in a sprint (measured in story points)",
+                        "The speed at which code is written",
+                        "How fast the product owner responds",
+                        "The number of sprints completed"
+                    ],
+                    "correct": 0,
+                    "explanation": "Velocity measures the amount of work a team completes in a sprint, typically measured in story points or ideal days. It helps with future sprint planning."
+                },
+                {
+                    "id": 25,
+                    "topic": "PMBOK & Project Management",
+                    "difficulty": "hard",
+                    "question": "What is the purpose of a 'Gantt Chart' in project management?",
+                    "options": [
+                        "Visualize project schedule and task dependencies",
+                        "Track project budget",
+                        "Manage project risks",
+                        "Document project requirements"
+                    ],
+                    "correct": 0,
+                    "explanation": "A Gantt chart is a bar chart that shows project tasks along a timeline, illustrating start/end dates and dependencies between activities."
+                },
+                {
+                    "id": 26,
+                    "topic": "Risk & Requirements",
+                    "difficulty": "medium",
+                    "question": "What is MoSCoW prioritization?",
+                    "options": [
+                        "Must have, Should have, Could have, Won't have",
+                        "Most critical, Somewhat critical, Could wait, Not needed",
+                        "Major, Optional, Small, Cancelled",
+                        "Minimum, Standard, Comprehensive, Optional, Wanted"
+                    ],
+                    "correct": 0,
+                    "explanation": "MoSCoW is a prioritization technique: Must have, Should have, Could have, Won't have (this time)."
+                },
+                {
+                    "id": 27,
+                    "topic": "Agile & Scrum",
+                    "difficulty": "hard",
+                    "question": "What is the purpose of 'Definition of Done' (DoD) in Scrum?",
+                    "options": [
+                        "A shared understanding of when work is complete and meets quality standards",
+                        "The deadline for completing a task",
+                        "The criteria for accepting a pull request",
+                        "The sprint length"
+                    ],
+                    "correct": 0,
+                    "explanation": "Definition of Done is a clear set of criteria that must be met before a product increment can be considered complete and potentially shippable."
+                },
+                {
+                    "id": 28,
+                    "topic": "Software Testing",
+                    "difficulty": "medium",
+                    "question": "What is smoke testing?",
+                    "options": [
+                        "Shallow testing to verify basic functionality after a build",
+                        "Testing performance under load",
+                        "Testing security vulnerabilities",
+                        "Exhaustive testing of all features"
+                    ],
+                    "correct": 0,
+                    "explanation": "Smoke testing (or sanity testing) is a quick set of tests to verify that the most crucial functions work, ensuring the build is testable."
+                },
+                {
+                    "id": 29,
+                    "topic": "Version Control & Git",
+                    "difficulty": "hard",
+                    "question": "What is the purpose of 'git bisect'?",
+                    "options": [
+                        "Automatically find the commit that introduced a bug using binary search",
+                        "Bisect files for changes",
+                        "Split a commit into two",
+                        "Merge two branches"
+                    ],
+                    "correct": 0,
+                    "explanation": "git bisect uses binary search to find which commit introduced a bug by marking commits as good or bad until the problematic commit is identified."
+                },
+                {
+                    "id": 30,
+                    "topic": "Risk & Requirements",
+                    "difficulty": "hard",
+                    "question": "What is the difference between 'Risk Appetite' and 'Risk Tolerance'?",
+                    "options": [
+                        "Appetite is the amount of risk willing to accept; Tolerance is the acceptable deviation from appetite",
+                        "They mean the same thing",
+                        "Appetite is for threats; Tolerance is for opportunities",
+                        "Tolerance is set by management; Appetite by team"
+                    ],
+                    "correct": 0,
+                    "explanation": "Risk appetite is the amount of risk an organization is willing to accept. Risk tolerance is the acceptable deviation from risk appetite for specific activities."
+                }
+            ]
+        };
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
